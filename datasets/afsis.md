@@ -11,6 +11,20 @@ AfSIS Phase I was a collaborative projective funded by the Bill and Melinda Gate
 - need aws cli
 - [how to use](https://github.com/qedsoftware/afsis-soil-chem-tutorial)
 
+[Wet chemistry data for a subset of AfSIS: Phase I archived soil samples](https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/66BFOB)
+
 Spectra: Mid-infrared diffuse reflectance spectroscopy.
 
 ## AfSiS II
+
+Soil Spectra and Wet Chemistry Measurements from ICRAF Soil-Plant Spectral Diagnostics Laboratory and Rothamsted Research: Africa Soil Information Service (AfSIS) Phase 2 Project Data 2014-2018 - TanSIS
+- In Tanzania, a country wide sampling targeting mainly the croplands was conducted. A total of 29,300 soil samples were collected at both 0-20cm, 20-50cm soil depths. All the samples collected were scanned using the four ZnSe Alpha I spectrometers at Selian Research Lab, Arusha, Tanzania. A subset of 461 soil samples was shipped to ICRAF and scanned on two spectrometers (HTS-xt and ZnSe Alpha I). The same 461 soil samples were also sent to RRes for wet chemistry analysis. The spectra data scanned at Selian (using ZnSe Alpha I) and that scanned at ICRAF Nairobi (using HTS-xt Tensor 27) and wetchem data (analyzed at RRes) are available on Dataverse here.
+- [Download link](https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/XUDGJY)
+
+Soil Spectra and Wet Chemistry Measurements from ICRAF Soil-Plant Spectral Diagnostics Laboratory and Rothamsted Research: Africa Soil Information Service (AfSIS) Phase 2 Project Data 2014-2018 - NiSIS
+- In Nigeria, 1,491 soil samples were collected at two sampling depths (0-20cm, 20-50cm) from two states – Kebbi and Ebonyi. The samples were shipped to ICRAF Soil-Plant Spectral Diagnostics Laboratory and scanned on two spectrometers (HTS-xt and ZnSe Alpha I). A subset of 149 soil samples was selected for wet chemistry analysis at RRes. Both the spectra data (scanned at ICRAF) and wetchem data (analyzed at RRes) are available on Dataverse here.
+- [Download link](https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/WLAKR2)
+
+Soil Spectra and Wet Chemistry Measurements from ICRAF Soil-Plant Spectral Diagnostics Laboratory and Rothamsted Research: Africa Soil Information Service (AfSIS) Phase 2 Project Data 2014-2018 - GhaSIS
+- In Ghana a total of 3,433 soil samples were collected at two sampling depths (0-20cm, 20-50cm) from Nov 2015 to Aug 2016. All the soil samples were scanned using a ZnSe Alpha I spectrometer at the Soil Research Institute of the Council of Science and Industrial Research (CSIR), Kumasi, Ghana. A subset of 210 soil samples was shipped to ICRAF Soil-Plant Spectral Diagnostics Laboratory and scanned on two spectrometers (HTS-xt and ZnSe Alpha I). The same 210 soil samples were also sent to RRes for wet chemistry analysis. The spectra data scanned at CSIR (using ZnSe Alpha I) and that scanned at ICRAF Nairobi (using HTS-xt Tensor 27) and wetchem data (analyzed at RRes) are available on Dataverse here.
+- [Downlaod link](https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/SPRSFN)
