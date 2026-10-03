@@ -21,14 +21,14 @@
 - spectra: NIR absorbance spectra from 680 to 2500 nm at 1 nm resolution
 - License: Creative Commons Attribution 4.0 International (CC BY 4.0) — permits use, modification and redistribution, provided appropriate credit is given.
 
-**Malounas, Ioannis, Wout Vierbergen, Kutluk Sezer, et al. 2024. “SpectroFood Dataset: A Comprehensive Fruit and Vegetable Hyperspectral Meta-Dataset for Dry Matter Estimation.” Data in Brief 52 (February): 110040.**
+**Mishra, Puneet, Theo Verkleij, and Ronald Klont. 2021. “Improved Prediction of Minced Pork Meat Chemical Properties with Near-Infrared Spectroscopy by a Fusion of Scatter-Correction Techniques.” Infrared Physics & Technology 113 (March): 103643. https://doi.org/10.1016/j.infrared.2021.103643.**
 
-- Description: A hyperspectral food dataset containing 1,028 samples from four food types: apple, broccoli, leek, and mushroom.
+- Description: A public spectroscopy dataset containing 215 meat samples and their measured moisture, fat and protein measurements, can be used for testing regression models.
 - [paper link](https://www.sciencedirect.com/science/article/pii/S1350449521000153)
 - [data link](https://lib.stat.cmu.edu/datasets/tecator)
-- food properties: Dry matter content (%), measured as the reference/target variable for each sample.
-- spectra: Mean VIS–NIR reflectance spectra from 430–900 nm for each food sample.
-- Licence: Creative Commons Attribution 4.0 International (CC BY 4.0) — permits use, modification and redistribution, provided appropriate credit is given.
+- food properties: food properties: moisture, fat and protein content
+- spectra: NIR transmission absorbance spectra from 850 to 1050 nm, with 100 spectral channels
+- Licence: Public Domain (subject to Tecator's supplied permission notice). Publications require users to mention Tecator and send Tecator a preprint.
 
 **Zhang, Qunjia, Lei Liu, and Jiacheng Mei. 2026. “A Multi-Scenario Proximal Hyperspectral Dataset of Clay-Type Lithium Deposits from China with Mineral Abundances and Geochemistry,” June.**
 - Description: An open geological hyperspectral dataset containing powder, drill-core, hand-specimen and outcrop measurements from clay-type lithium deposits in southwest China.
