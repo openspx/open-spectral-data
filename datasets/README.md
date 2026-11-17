@@ -8,7 +8,8 @@ defined in [RECORD-FORMAT.md](RECORD-FORMAT.md); allowed values are listed in
 | # | Domain | Records |
 |---|---|---|
 | 1 | [Soil science and digital soil mapping](soil-science/_index.md) | 20 |
-| 6 | [Geoscience and geological materials](geoscience/_index.md) | 1 |
+| 3 | [Food and feed quality, authenticity, and safety](food-feed-quality/_index.md) | 1 |
+| 6 | [Geoscience and geological materials](geoscience/_index.md) | 2 |
 | 9 | [Astronomy](astronomy/_index.md) | 1 |
 
 [controlled-vocab.yaml](controlled-vocab.yaml) defines further domains, which gain a

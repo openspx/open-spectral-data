@@ -12,7 +12,7 @@ Vocabulary: [controlled-vocab](../controlled-vocab.yaml).
 | [afsis-nisis](afsis-nisis.md) | AfSIS Phase 2 — NiSIS (Nigeria) | dataset | laboratory | MIR (cm-1) | 1491 | open | CC-BY-4.0 | medium |
 | [afsis-tansis](afsis-tansis.md) | AfSIS Phase 2 — TanSIS (Tanzania) | dataset | laboratory | MIR (cm-1) | 29300 | open | CC-BY-4.0 | medium |
 | [afsis](afsis.md) | Africa Soil Information Service (AfSIS) spectral collection | collection | laboratory | MIR (cm-1) | ~18500 | open | CC-BY-4.0 | medium |
-| [aut](aut.md) | Austrian NIR soil spectral library (AUT) | dataset | laboratory | NIR (nm) | 2131 | open | CC-BY-4.0 | medium |
+| [aut](aut.md) | Austrian NIR soil spectral library (AUT) | dataset | laboratory | NIR (nm) | 2129 | open | CC-BY-4.0 | medium |
 | [besb](besb.md) | Brazilian Soil Spectral Library (BESB) | dataset | laboratory | VNIR (nm); MIR (cm-1) | 16084 | open | CC-BY-4.0 | medium |
 | [caf](caf.md) | Central Africa soil spectral library (CAF) | dataset | laboratory | MIR (cm-1) | 1852 | open | CC-BY-4.0 | medium |
 | [cassl](cassl.md) | Central African Soil Spectral Library (CASSL) | dataset | laboratory | MIR (cm-1) | 1800 | open | unknown | medium |
