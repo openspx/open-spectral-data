@@ -11,10 +11,12 @@ Thank you for considering contributing to this project 🎉
    ```
 3. Make your changes
     You can:
-    - add a new item in `datasets/from-papers.md`
-    - or create a new `.md` file if the dataset is from a different source
+    - add a record under the matching domain folder in `datasets/`
+    - or create a new `.md` file if the dataset fits a different domain
 
-    A name, description and link(s) to download should be provided for each item.
+    Each record starts with YAML front matter that satisfies
+    [`datasets/RECORD-FORMAT.md`](datasets/RECORD-FORMAT.md), followed by prose with the
+    name, description and link(s) to download.
 4. Commit with clear messages
   ```bash
   git commit -m "Add: xxx dataset"

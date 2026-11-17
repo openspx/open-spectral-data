@@ -1,3 +1,86 @@
+---
+id: lucas
+name: LUCAS topsoil spectral collection
+record_type: collection
+domain: soil-science
+domain_id: 1
+status: active
+host: European Commission JRC / ESDAC
+landing_page: https://esdac.jrc.ec.europa.eu/projects/lucas
+doi:
+citation: European Commission Joint Research Centre. LUCAS Topsoil database.
+platform:
+- laboratory
+spectral_coverage:
+- min:
+  max:
+  unit: cm-1
+  region: MIR
+- min:
+  max:
+  unit: nm
+  region: VNIR
+spectral_units:
+- nm
+- cm-1
+measurement_mode:
+- reflectance
+- absorbance
+count:
+count_qualifier: unknown
+reference_variables:
+- name: clay
+  kind: continuous
+  measured: unknown
+- name: silt
+  kind: continuous
+  measured: unknown
+- name: sand
+  kind: continuous
+  measured: unknown
+- name: coarse fragments
+  kind: continuous
+  measured: unknown
+- name: pH CaCl2
+  kind: continuous
+  measured: unknown
+- name: pH H2O
+  kind: continuous
+  measured: unknown
+- name: organic carbon
+  kind: continuous
+  measured: unknown
+- name: CaCO3
+  kind: continuous
+  measured: unknown
+- name: nitrogen
+  kind: continuous
+  measured: unknown
+- name: phosphorus
+  kind: continuous
+  measured: unknown
+- name: potassium
+  kind: continuous
+  measured: unknown
+- name: EC
+  kind: continuous
+  measured: unknown
+access_class: registration
+licence: unknown
+download_url: https://esdac.jrc.ec.europa.eu/projects/lucas
+known_gaps:
+- Seven catalogue entries, but only four are spectral topsoil campaigns; one is derived,
+  one has no stated spectra, one is a subset.
+- Registration requirement is stated in the repo prose but not re-verified.
+- No DOI is stated; campaign counts differ and are not aggregated here.
+confidence: low
+last_verified:
+verification_notes: Repo prose only; ESDAC pages not reopened.
+part_of: ossl
+children: []
+related: []
+---
+
 # LUCAS datasets
 
 The [LUCAS project](https://esdac.jrc.ec.europa.eu/projects/lucas)

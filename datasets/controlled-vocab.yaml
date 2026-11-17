@@ -1,0 +1,327 @@
+# ---------------------------------------------------------------------------
+# controlled-vocab.yaml
+#
+# AUTHORITATIVE controlled vocabulary for spectral dataset records.
+#
+# The inline enumerations in datasets/RECORD-FORMAT.md defer to this file.
+# If the two disagree, this file wins and RECORD-FORMAT.md must be corrected.
+#
+# - `domains` fixes the stable domain_id, the unprefixed folder slug, the
+#   display name, and the presentation sequence.
+# - `enums` holds the allowed values plus accepted aliases, so incoming
+#   records can be normalised instead of rejected.
+# - Sets marked `provisional: true` are expected to gain values as real
+#   records arrive; sets marked false are considered stable.
+#
+# Alias matching: fold the Unicode characters below, trim whitespace,
+# lowercase, then look the result up in `aliases`. Canonical values are
+# lowercase with hyphens, and must not be changed without a migration.
+# ---------------------------------------------------------------------------
+
+version: 1
+updated: "2026-11-16"
+
+normalisation:
+  case: lower
+  trim: true
+  unicode_fold:
+    "µ": "u"          # micro sign
+    "μ": "u"          # Greek mu
+    "Å": "angstrom"
+    "⁻¹": "-1"
+  note: >
+    Fold, trim and lowercase before alias lookup. Alias keys are written in
+    their common spelling for readability; matching is case-insensitive.
+
+# ---------------------------------------------------------------------------
+# Domains
+#
+# `domain_id` is permanent and is the stable key used by records.
+# `sequence` is display order only; it reproduces the numbering of
+# .documents/domain-reviews.md without encoding it in folder names. Sequence
+# may be changed without touching records; domain_id may not.
+# ---------------------------------------------------------------------------
+
+domains_provisional: false
+
+domains:
+  - domain_id: 1
+    sequence: 1
+    slug: soil-science
+    name: Soil science and digital soil mapping
+
+  - domain_id: 2
+    sequence: 2
+    slug: precision-agriculture
+    name: Precision agriculture and crop/plant phenotyping
+
+  - domain_id: 3
+    sequence: 3
+    slug: food-feed-quality
+    name: Food and feed quality, authenticity, and safety
+
+  - domain_id: 4
+    sequence: 4
+    slug: pharma-pat
+    name: Pharmaceuticals and process analytical technology (PAT)
+
+  - domain_id: 5
+    sequence: 5
+    slug: remote-sensing
+    name: Remote sensing and Earth observation
+
+  # Domain 6 corresponds to section 6 of .documents/domain-reviews.md.
+  # It is carried as `geoscience`: mineral species and drill-core concepts
+  # are reference_variables, not a separate domain.
+  - domain_id: 6
+    sequence: 6
+    slug: geoscience
+    name: Geoscience and geological materials
+
+  - domain_id: 7
+    sequence: 7
+    slug: medical-biological
+    name: Medical and biological spectroscopy
+
+  - domain_id: 8
+    sequence: 8
+    slug: forensics
+    name: Forensics
+
+  - domain_id: 9
+    sequence: 9
+    slug: astronomy
+    name: Astronomy
+
+  - domain_id: 10
+    sequence: 10
+    slug: art-conservation
+    name: Art conservation and cultural heritage
+
+# ---------------------------------------------------------------------------
+# Enumerations
+# ---------------------------------------------------------------------------
+
+enums:
+
+  record_type:
+    provisional: false
+    canonical: [dataset, collection, aggregator, portal]
+    aliases: {}
+
+  status:
+    provisional: false
+    canonical: [active, deprecated, draft]
+    aliases: {}
+
+  confidence:
+    provisional: false
+    canonical: [high, medium, low]
+    aliases: {}
+
+  reference_variable_kind:
+    provisional: false
+    canonical: [continuous, categorical, ordinal, text]
+    aliases:
+      numeric: continuous
+      numerical: continuous
+      float: continuous
+      integer: continuous
+      class: categorical
+      label: categorical
+      ordered: ordinal
+      free-text: text
+      string: text
+
+  measured:
+    provisional: false
+    note: >
+      Tri-state. true is a laboratory or direct measurement; false is a value
+      derived, estimated, predicted, assigned or inherited from another
+      variable; unknown means the source does not establish either. unknown is
+      not a synonym for false.
+    canonical: [true, false, unknown]
+    aliases: {}
+
+  count_qualifier:
+    provisional: false
+    note: >
+      Qualifies a numeric count. exact means the stated number is exact; gte
+      means "at least"; approx means approximate; unknown means no reliable
+      count. A missing qualifier is read as unknown, never exact.
+    canonical: [exact, gte, approx, unknown]
+    aliases:
+      min: gte
+      at-least: gte
+      greater-than-or-equal: gte
+      approximately: approx
+      about: approx
+      "~": approx
+
+  platform:
+    provisional: true
+    note: >
+      Provisional: expects additions for rover, balloon, UAV-swarm and
+      laboratory-microscope platforms. Existing values cover the current
+      domains and should not be renamed.
+    canonical:
+      - laboratory
+      - benchtop-imaging
+      - handheld
+      - field
+      - uav
+      - airborne
+      - satellite
+      - telescope
+      - borehole
+      - other
+    aliases:
+      lab: laboratory
+      laboratory-bench: laboratory
+      benchtop: laboratory
+      bench: laboratory
+      imaging-lab: benchtop-imaging
+      hyperspectral-imaging: benchtop-imaging
+      imaging-spectrometer: benchtop-imaging
+      field-portable: handheld
+      portable: handheld
+      proximal: field
+      field-based: field
+      drone: uav
+      UAS: uav
+      RPAS: uav
+      unmanned-aerial-vehicle: uav
+      aircraft: airborne
+      plane: airborne
+      airborne-campaign: airborne
+      spaceborne: satellite
+      orbital: satellite
+      spacecraft: satellite
+      ground-based: telescope
+      observatory: telescope
+      downhole: borehole
+      well-log: borehole
+      other-platform: other
+
+  access_class:
+    provisional: false
+    note: >
+      Stable. Use `mixed` when some components are open and others are not,
+      and explain the split in access_notes.
+    canonical:
+      - open
+      - registration
+      - on-request
+      - closed
+      - mixed
+    aliases:
+      public: open
+      open-access: open
+      freely-available: open
+      download: open
+      signup: registration
+      sign-up: registration
+      registration-required: registration
+      login: registration
+      account-required: registration
+      request: on-request
+      by-request: on-request
+      author-request: on-request
+      contact-author: on-request
+      application: on-request
+      restricted: closed
+      private: closed
+      embargoed: closed
+      unavailable: closed
+      partial: mixed
+      mixed-access: mixed
+
+  measurement_mode:
+    provisional: true
+    note: >
+      Provisional: polarisation, interferometric phase and time-resolved
+      modes are not yet first-class values. Use `other` with intensity_units
+      until they are. `flux` covers astronomical relative and absolute flux,
+      and `SIF` maps to `radiance` because it is an at-sensor radiance
+      measurement.
+    canonical:
+      - reflectance
+      - transmittance
+      - absorbance
+      - radiance
+      - irradiance
+      - emission
+      - flux
+      - other
+    aliases:
+      vis-nir: reflectance
+      VNIR: reflectance
+      VisNIR: reflectance
+      vis/nir: reflectance
+      diffuse-reflectance: reflectance
+      DR: reflectance
+      bidirectional-reflectance: reflectance
+      hemispherical-reflectance: reflectance
+      reflection: reflectance
+      transmission: transmittance
+      direct-transmission: transmittance
+      transmissivity: transmittance
+      optical-density: absorbance
+      OD: absorbance
+      ftir-absorbance: absorbance
+      absorption: absorbance
+      at-sensor-radiance: radiance
+      spectral-radiance: radiance
+      SIF: radiance
+      solar-induced-fluorescence: radiance
+      spectral-irradiance: irradiance
+      downwelling-irradiance: irradiance
+      upwelling-irradiance: irradiance
+      emissivity: emission
+      thermal-emission: emission
+      thermal-infrared-emission: emission
+      relative-flux: flux
+      absolute-flux: flux
+      spectral-flux: flux
+      counts: flux
+      intensity: flux
+      other-mode: other
+
+  spectral_units:
+    provisional: false
+    note: >
+      Allowed axis units. A record lists one or more of these in spectral_units,
+      even when only one unit is present; each spectral_coverage range carries
+      its own unit. Intensity units (W m-2 sr-1 nm-1, DN, relative flux, etc.)
+      are free text in the record's intensity_units field and are not
+      constrained here.
+    canonical:
+      - nm
+      - um
+      - cm-1
+      - angstrom
+    aliases:
+      nanometre: nm
+      nanometer: nm
+      nanometres: nm
+      nanometers: nm
+      "µm": um
+      "μm": um
+      micron: um
+      microns: um
+      micrometre: um
+      micrometer: um
+      "cm^-1": cm-1
+      "cm⁻¹": cm-1
+      wavenumber: cm-1
+      wavenumbers: cm-1
+      "Å": angstrom
+      Angstrom: angstrom
+      angstroms: angstrom
+
+# ---------------------------------------------------------------------------
+# Provisional sets, summarised for tooling:
+#   platform
+#   measurement_mode
+# Everything else, including the domain list, is stable as of `updated`.
+# ---------------------------------------------------------------------------
