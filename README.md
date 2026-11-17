@@ -1,14 +1,10 @@
 # A collection of open source spectral datasets
 
-- [Datasets from papers](datasets/from-papers.md)
+## Datasets
 
-- [LUCAS datasets](datasets/lucas.md)
-
-- [ICRAF-ISRIC](datasets/icraf-isric.md)
-
-- [Africa Soil Information Service (AfSiS)](datasets/afsis.md)
-
-- [NASA PDS Geosciences Node Spectral Library](datasets/pds-spectral.md)
+Browse the [dataset index](datasets/README.md) for records grouped by domain. The
+[record format spec](datasets/RECORD-FORMAT.md) defines the front matter and fields every
+record carries.
 
 # Contributing 
 
