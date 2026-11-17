@@ -1,0 +1,5 @@
+# AfSIS Phase 2 — TanSIS (Tanzania)
+
+Soil Spectra and Wet Chemistry Measurements from ICRAF Soil-Plant Spectral Diagnostics Laboratory and Rothamsted Research: Africa Soil Information Service (AfSIS) Phase 2 Project Data 2014-2018 - TanSIS
+- In Tanzania, a country wide sampling targeting mainly the croplands was conducted. A total of 29,300 soil samples were collected at both 0-20cm, 20-50cm soil depths. All the samples collected were scanned using the four ZnSe Alpha I spectrometers at Selian Research Lab, Arusha, Tanzania. A subset of 461 soil samples was shipped to ICRAF and scanned on two spectrometers (HTS-xt and ZnSe Alpha I). The same 461 soil samples were also sent to RRes for wet chemistry analysis. The spectra data scanned at Selian (using ZnSe Alpha I) and that scanned at ICRAF Nairobi (using HTS-xt Tensor 27) and wetchem data (analyzed at RRes) are available on Dataverse here.
+- [Download link](https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/XUDGJY)
