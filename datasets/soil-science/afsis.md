@@ -1,3 +1,62 @@
+---
+id: afsis
+name: Africa Soil Information Service (AfSIS) spectral collection
+record_type: collection
+domain: soil-science
+domain_id: 1
+status: active
+host: World Agroforestry (ICRAF)
+landing_page: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/QXCWP1
+doi: 10.34725/DVN/QXCWP1
+citation: ICRAF Soil-Plant Spectral Diagnostics Laboratory. AfSIS Phase I and II soil
+  spectra.
+platform:
+- laboratory
+spectral_coverage:
+- min:
+  max:
+  unit: cm-1
+  region: MIR
+spectral_units:
+- cm-1
+measurement_mode:
+- reflectance
+count: 18500
+count_qualifier: approx
+reference_variables:
+- name: pH
+  kind: continuous
+  measured: unknown
+- name: organic carbon
+  kind: continuous
+  measured: unknown
+- name: total nitrogen
+  kind: continuous
+  measured: unknown
+- name: texture
+  kind: continuous
+  measured: unknown
+- name: CEC
+  kind: continuous
+  measured: unknown
+access_class: open
+licence: CC-BY-4.0
+download_url: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/QXCWP1
+known_gaps:
+- Count is the Phase I figure (~18,500); Phase II country totals are separate.
+- OSSL AFSIS1 and AFSIS2 are combined in this record.
+- Property methods and measured-versus-derived status are not stated.
+confidence: medium
+last_verified:
+verification_notes: Repo prose and OSSL catalogue checked; Dataverse terms not reopened.
+part_of: ossl
+children:
+- afsis-tansis
+- afsis-nisis
+- afsis-ghasis
+related: []
+---
+
 # Africa Soil Information Service (AfSIS)
 
 ## AfSIS I
