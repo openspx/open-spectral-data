@@ -34,8 +34,9 @@ Domain folders are unprefixed slugs (`soil-science`, not `01-soil-science`).
 `domain_id` is the stable key; ordering lives in `controlled-vocab.yaml` as
 `sequence`, never in folder names. Only domains that hold at least one record have
 a folder; the rest exist only in the vocabulary and gain a folder with their first
-record. `datasets/others/` currently exists but is empty — it is not a domain and
-must not be used.
+record. `datasets/others/` is a holding area for datasets that do not fit a domain
+yet; it is not a domain (no `domain_id`, no `_index.md`, no README row), and anything
+placed there should move to a proper domain once one fits.
 
 At the time of writing the populated domains are `soil-science` (1), `food-feed-quality`
 (3), `geoscience` (6) and `astronomy` (9); live counts are in [datasets/README.md](datasets/README.md).
