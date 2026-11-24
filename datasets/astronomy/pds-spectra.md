@@ -7,37 +7,42 @@ domain_id: 9
 status: active
 host: NASA PDS Geosciences Node / Washington University in St. Louis
 landing_page: https://pds-speclib.rsl.wustl.edu/
-doi:
-citation: NASA Planetary Data System Geosciences Node. Spectral Library and RELAB
-  database.
+doi: null
+citation: NASA Planetary Data System Geosciences Node. Spectral Library and RELAB database.
 platform:
 - laboratory
 spectral_coverage:
-- min:
-  max:
-  unit: nm
-  region: UV-far-IR
+- min: null
+  max: null
+  unit: unknown
+  region: collection-dependent portal axes; select a product
 spectral_units:
-- nm
+- unknown
 measurement_mode:
 - reflectance
-count:
+- emission
+- other
+count: null
 count_qualifier: unknown
 reference_variables: []
 access_class: open
 licence: unknown
 download_url: https://pds-speclib.rsl.wustl.edu/
 known_gaps:
-- The portal combines the PDS spectral library and RELAB; they are not separated in
-  this record.
-- UV–far-IR is stated without numeric bounds or an axis unit; `nm` is a placeholder.
 - No DOI is stated for the portal.
 - Licence is not stated in the repository prose.
-confidence: low
-last_verified:
-verification_notes: Repo prose only; PDS portal not reopened.
-part_of:
-children: []
+- The portal contains distinct reflectance, LIBS and XAS collections with different axes; no uniform physical
+  axis unit or portal-wide target table is established. RELAB is a separate linked child record.
+confidence: medium
+last_verified: '2026-11-23'
+verification_notes: 'current primary portal and archive-directory documentation; date 2026-11-23. The
+  live NASA/Washington University portal and archive listing distinguish RELAB, Frankenspectra, LIBS and
+  XAS collections. This confirms a multi-collection access point, not a single spectral matrix or one
+  uniform wavelength axis. No portal-wide numerical export or email-delivery workflow was tested. Sources:
+  https://pds-speclib.rsl.wustl.edu/; https://pds-geosciences.wustl.edu/speclib/.'
+part_of: null
+children:
+- relab
 related: []
 ---
 
@@ -53,4 +58,18 @@ The NASA Reflectance Experiment LABoratory (RELAB) database includes spectral me
 
 PDS Data products are freely available to the public.
 
-The user will receive an email with direct links to download the packaged file and corresponding md5 checksum file. The checksum file can be used to confirm the file integrity of the requested files.
+The provider offers separate searchable collections and public PDS archive directories. A packaged-download/email workflow was described in the earlier catalogue but was not tested in this review; use collection-specific access and reuse terms.
+
+
+
+
+## Quality and caveats
+
+**Record confidence: medium.** The live NASA/Washington University portal and archive listing distinguish RELAB, Frankenspectra, LIBS and XAS collections. This confirms a multi-collection access point, not a single spectral matrix or one uniform wavelength axis. No portal-wide numerical export or email-delivery workflow was tested. The verification date is 2026-11-23 and covers current primary portal and archive-directory documentation, not scientific accuracy or every resource component.
+
+## Cross-references
+
+- [RELAB selected PDS records](../geoscience/relab.md) — week-one alias S17; a two-record inspection, not a portal-wide validation.
+
+
+Review sources: [primary source 1](https://pds-speclib.rsl.wustl.edu/), [primary source 2](https://pds-geosciences.wustl.edu/speclib/).

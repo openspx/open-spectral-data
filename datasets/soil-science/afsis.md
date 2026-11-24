@@ -8,21 +8,21 @@ status: active
 host: World Agroforestry (ICRAF)
 landing_page: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/QXCWP1
 doi: 10.34725/DVN/QXCWP1
-citation: ICRAF Soil-Plant Spectral Diagnostics Laboratory. AfSIS Phase I and II soil
-  spectra.
+citation: ICRAF Soil-Plant Spectral Diagnostics Laboratory. AfSIS Phase I and II soil spectra.
 platform:
 - laboratory
 spectral_coverage:
-- min:
-  max:
+- min: null
+  max: null
   unit: cm-1
   region: MIR
 spectral_units:
 - cm-1
 measurement_mode:
-- reflectance
-count: 18500
-count_qualifier: approx
+- absorbance
+- other
+count: null
+count_qualifier: unknown
 reference_variables:
 - name: pH
   kind: continuous
@@ -40,21 +40,34 @@ reference_variables:
   kind: continuous
   measured: unknown
 access_class: open
-licence: CC-BY-4.0
+licence: unknown
 download_url: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/QXCWP1
 known_gaps:
 - Count is the Phase I figure (~18,500); Phase II country totals are separate.
 - OSSL AFSIS1 and AFSIS2 are combined in this record.
 - Property methods and measured-versus-derived status are not stated.
+- Depositor-supplied DataCite metadata has no rights statement. The original Dataverse terms are unverified;
+  an OSSL attribution label is not a confirmed licence for this original deposit.
+- Approximately 18,500 describes Phase I only; no sum across this umbrella collection and its country
+  children is established. OSSL subsets have different coverage.
+- The current OSSL cards identify absorbance for standardized MIR products. This does not establish identical
+  transformations in all original Phase-I/country files.
 confidence: medium
-last_verified:
-verification_notes: Repo prose and OSSL catalogue checked; Dataverse terms not reopened.
+last_verified: '2026-11-23'
+verification_notes: 'current depositor metadata and maintainer distribution documentation; date 2026-11-23.
+  The registered Phase-I description supports approximately 18,500 MIR samples, distinct from the much
+  smaller OSSL representation and Phase-II country subsets. It does not establish a total for this umbrella
+  collection. No numerical files were inspected; DataCite rights are empty and original Dataverse terms
+  remain unverified. Sources: https://api.datacite.org/dois/10.34725/DVN/QXCWP1; https://docs.soilspectroscopy.org/datasets/AFSIS1.html;
+  https://docs.soilspectroscopy.org/datasets/AFSIS2.html.'
 part_of: ossl
 children:
 - afsis-tansis
 - afsis-nisis
 - afsis-ghasis
 related: []
+intensity_units: OSSL contributor views are described as absorbance; original-collection product conventions
+  are not uniformly verified
 ---
 
 # Africa Soil Information Service (AfSIS)
@@ -80,3 +93,11 @@ Phase 2 country datasets:
 - [TanSIS](afsis-tansis.md)
 - [NiSIS](afsis-nisis.md)
 - [GhaSIS](afsis-ghasis.md)
+
+
+## Quality and caveats
+
+**Record confidence: medium.** The registered Phase-I description supports approximately 18,500 MIR samples, distinct from the much smaller OSSL representation and Phase-II country subsets. It does not establish a total for this umbrella collection. No numerical files were inspected; DataCite rights are empty and original Dataverse terms remain unverified. The verification date is 2026-11-23 and covers current depositor metadata and maintainer distribution documentation, not scientific accuracy or every resource component.
+
+
+Review sources: [primary source 1](https://api.datacite.org/dois/10.34725/DVN/QXCWP1), [primary source 2](https://docs.soilspectroscopy.org/datasets/AFSIS1.html), [primary source 3](https://docs.soilspectroscopy.org/datasets/AFSIS2.html).

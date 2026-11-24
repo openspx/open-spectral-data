@@ -34,7 +34,7 @@ list is an explicit statement and a missing key is not.
 | `aliases` | list[string] | optional | Acronyms, former names and catalogue identifiers. |
 | `record_type` | enum | required | `dataset`, `collection`, `aggregator` or `portal`. |
 | `domain` | string | required | Folder slug for the canonical domain, e.g. `geoscience`. |
-| `domain_id` | integer | required | Numeric domain key (1–10); the stable ordering key. |
+| `domain_id` | integer | required | Numeric domain key from `controlled-vocab.yaml`; existing keys are permanent. |
 | `status` | enum | optional | `active` (default), `deprecated` or `draft`. |
 | `version` | string | optional | Dataset version or release label, e.g. `1.0`, `2024-06`. |
 
@@ -66,7 +66,7 @@ unavailable; it does not mean the dataset is inaccessible.
 | `band_count` | integer | optional | Number of spectral bands or channels, if fixed. |
 | `sampling_interval` | object | optional | `{value, unit}` spacing between samples; omit or set `null` if irregular. |
 | `spectral_resolution` | object | optional | `{value, unit}` instrumental resolution (FWHM or equivalent). |
-| `spectral_units` | list[enum] | required | Axis units present, one per coverage region: `nm`, `um`, `cm-1`, `angstrom`. Always a list, even for a single unit. |
+| `spectral_units` | list[enum] | required | Axis units present, one per coverage region: `nm`, `um`, `cm-1`, `angstrom`, `mz`, `ppm`, `hz`, `thz`, `kev`, `channel`, `unknown`. Always a list, even for a single unit. |
 | `measurement_mode` | list[enum] | required | What the recorded quantity is. |
 | `intensity_units` | string | optional | Units of the recorded intensity, e.g. `W m-2 sr-1 nm-1`, `DN`, `relative flux`. |
 | `preparation` | string | optional | Sample preparation, if any. |
@@ -112,13 +112,21 @@ breakdown is known.
 | `known_gaps` | list[string] | optional | Missing variables, sparse columns, limited coverage. |
 | `harmonisation_issues` | list[string] | optional | Unit, method or calibration incompatibilities with other datasets. |
 | `confidence` | enum | required | `high`, `medium` or `low`, reflecting how well the record was verified. |
-| `last_verified` | date or null | required | Date the source was actually checked; null when only repository prose was read. |
+| `last_verified` | date or null | required | Date of the source check described in verification_notes; may be a supported historical date. Null without adequate dated source evidence. |
 | `verification_notes` | string | optional | What was checked and what could not be confirmed. |
 
-`last_verified` is set only when the underlying source was actually checked. Use `null`
-when the record was assembled from repository prose without re-checking the source. A
-null value means "copied from repo prose, not re-verified against the source"; it does
-not mean "recently checked" and must not be read as a freshness signal.
+`last_verified` records the date of the source check explicitly described in
+`verification_notes`. It may inherit a historical date only when a dated verification
+record identifies the primary source/artifact, what was checked and the applicable
+release or subset. Reading or transferring that evidence does not refresh its date.
+
+A new check of provider documentation can establish a new **documentation-review**
+date, but the notes must distinguish it from historical numerical-file checks and
+uninspected claims. A local primary-file/header review must likewise be identified as
+local, not a fresh provider-web check. A retrieval timestamp alone, a failed endpoint,
+an undated secondary summary or the transfer date is insufficient. Keep `null` when no
+defensible dated source check supports the record's stated scope. A date never means
+every portal/library claim or every file was checked on that day.
 
 ### Cross-references
 
@@ -203,13 +211,15 @@ proximal instruments.
 `reflectance` · `transmittance` · `absorbance` · `radiance` · `irradiance` ·
 `emission` · `flux` · `other`
 
+Non-optical records use `other` when they store impedance, NMR signals, mass-peak intensity, gamma counts or optical constants rather than one of the optical quantities. Explain the signal and any simulation in `intensity_units` and Acquisition.
+
 `flux` covers astronomical spectra where the recorded quantity is calibrated or relative
 flux rather than reflectance or radiance. Use `other` with an explanation in
 `intensity_units` when none of these fit.
 
 ### `spectral_units`
 
-`nm` · `um` · `cm-1` · `angstrom`
+`nm` · `um` · `cm-1` · `angstrom` · `mz` · `ppm` · `hz` · `thz` · `kev` · `channel` · `unknown`
 
 `spectral_units` is a list, even when only one unit is present, so a record can hold
 VNIR in `nm` and MIR in `cm-1` at once. Each `spectral_coverage` entry carries its own
@@ -226,13 +236,23 @@ one range.
 
 `um` is ASCII for micrometres. `cm-1` is wavenumber, used mainly for MIR and Raman.
 
+`mz` denotes mass-to-charge (m/z); `ppm` denotes NMR chemical shift. `hz`, `thz` and `kev` are canonical spellings of Hz, THz and keV. Use `channel` only for an explicitly indexed band/bin axis and `unknown` when the physical axis unit is not established. These markers are not physical-unit conversions and require an explanation in `known_gaps`. Do not invent wavelength or energy coordinates.
+
+
 ### `confidence`
 
 `high` · `medium` · `low`
 
-- `high` — key fields checked directly against the source and counts recomputed where possible.
-- `medium` — landing page and main metadata checked; some counts or methods taken from documentation.
-- `low` — record assembled from secondary sources or memory; treat as provisional.
+- `high` — key descriptive fields have direct primary-source support and relevant file checks; counts are recomputed where possible. The assessment is limited to the stated release/file set.
+- `medium` — primary source or main metadata is supported, but some methods, counts, provenance or other details remain documentation-based or unresolved.
+- `low` — important claims lack adequate evidence, provenance is unclear, or the description relies mainly on unsupported secondary information.
+
+Confidence assesses the **catalogue description**, not scientific accuracy, independent
+ground truth, project suitability or unrestricted reuse. It is independent of `status`
+and the verification date. Historical primary evidence can support confidence; an
+inspected subset does not validate its parent library. Unknowns and restrictions must
+remain explicit, and a narrow well-supported record need not be low merely because
+the full resource was not downloaded.
 
 ### `reference_variables[].kind`
 
@@ -244,9 +264,11 @@ one range.
 
 After the closing `---` of the front matter, use these headings in this order. Omit a
 section only if it is genuinely empty; do not replace the structure with unlabelled
-prose.
+prose. Use exactly one H1 title (`# Dataset name`) per record.
 
 ```markdown
+# Dataset name
+
 ## Summary
 
 Two to four sentences: what the dataset is, what it covers, and why someone would use it.
@@ -277,7 +299,7 @@ licence. Repeat any restriction that is easy to miss.
 
 Known gaps, calibration or method differences that limit reuse, and anything that would
 mislead a user who reads only the front matter. State whether `last_verified` is null
-and why; null means repo-only, not recently checked.
+and why; null means no defensible dated source check is established.
 
 ## Cross-references
 
@@ -345,7 +367,7 @@ definitions:
     properties:
       min: {type: [number, "null"]}
       max: {type: [number, "null"]}
-      unit: {enum: [nm, um, cm-1, angstrom]}
+      unit: {enum: [nm, um, cm-1, angstrom, mz, ppm, hz, thz, kev, channel, unknown]}
       region: {type: string, minLength: 1}
 
   resolution:
@@ -455,7 +477,7 @@ properties:
     minItems: 1
     uniqueItems: true
     items:
-      enum: [nm, um, cm-1, angstrom]
+      enum: [nm, um, cm-1, angstrom, mz, ppm, hz, thz, kev, channel, unknown]
   measurement_mode:
     type: array
     minItems: 1
@@ -544,7 +566,7 @@ properties:
   last_verified:
     type: [string, "null"]
     format: date
-    description: Null means copied from repo prose, not re-verified against the source.
+    description: Date of the explicitly scoped source check, including supported historical evidence; null without defensible dated source evidence.
   verification_notes:
     type: string
     minLength: 1
@@ -725,6 +747,10 @@ satellite hyperspectral mineral mapping as a laboratory reference set.
 ```
 
 ---
+
+New domains append a new permanent ID in `controlled-vocab.yaml`; never renumber existing domains. Existing broad domains may remain registered without a populated folder. For an approved merge, move records to the destination domain and its existing ID, record old folder slugs in `domain_aliases`, and reserve removed IDs in `retired_domains`. A retired ID is never reassigned. Domain aliases are migration information, not valid canonical record domains.
+
+Domain indexes sort by stable record `id`, not display name. Show `unknown` when a count lacks an established qualifier. Dated research output and review notes belong under the ignored `.documents/<YYYY-MM-DD>/` folder, not in `datasets/`.
 
 ## 8. Contribution checklist
 

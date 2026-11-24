@@ -8,9 +8,9 @@ status: active
 host: AGES
 landing_page: https://zenodo.org/records/17941270
 doi: 10.5281/zenodo.17941270
-citation: Fohrafellner, J., Lippl, M., Bajraktarevic, A., Baumgarten, A., Spiegel, H.,
-  Körner, R., & Sandén, T. (2026). Austrian NIR Soil Spectral Library for Soil Health
-  Assessments. Earth System Science Data, 18(1), 219–229.
+citation: Fohrafellner, J., Lippl, M., Bajraktarevic, A., Baumgarten, A., Spiegel, H., Körner, R., & Sandén,
+  T. (2026). Austrian NIR Soil Spectral Library for Soil Health Assessments. Earth System Science Data,
+  18(1), 219–229.
 platform:
 - laboratory
 spectral_coverage:
@@ -22,7 +22,6 @@ spectral_units:
 - nm
 measurement_mode:
 - absorbance
-- reflectance
 count: 2129
 count_qualifier: exact
 reference_variables:
@@ -60,20 +59,27 @@ reference_variables:
   kind: continuous
   measured: unknown
 access_class: open
-licence: CC-BY-4.0
+licence: unknown
 download_url: https://zenodo.org/records/17941270
 known_gaps:
 - The ESSD article states 2,129 samples; the OSSL catalogue gives 2,131.
-- The ESSD article describes absorbance spectra; the OSSL catalogue implies reflectance.
-  Both are recorded rather than choosing one.
-- The ESSD article states 14 soil-health properties but names 11.
 - Property methods and measured-versus-derived status are not stated.
+- The maintainer attribution label is documented, but the original-deposit licence was not independently
+  established in the accessible provider metadata; check original terms before reuse.
+- The original paper documents absorbance and 2,129 samples; OSSL describes another representation with
+  2,131 rows. This record does not assert byte equivalence or merge those counts.
 confidence: medium
-last_verified:
-verification_notes: OSSL catalogue checked; Zenodo record not reopened.
+last_verified: '2026-11-23'
+verification_notes: 'current original paper and maintainer-card documentation; date 2026-11-23. The original
+  ESSD paper documents 2,129 samples, 680–2500 nm absorbance and fourteen reference-analysis columns;
+  the OSSL card reports 2,131 rows. These scopes are not merged into one observed count. The Zenodo route
+  was blocked, numerical files were not inspected and original-deposit reuse terms remain unconfirmed.
+  Sources: https://essd.copernicus.org/articles/18/219/2026/; https://docs.soilspectroscopy.org/datasets/AUT.html.'
 part_of: ossl
 children: []
 related: []
+intensity_units: log10(1/reflectance) absorbance as described for the original-paper data; OSSL representation
+  requires separate checking
 ---
 
 # Austrian NIR soil spectral library (AUT)
@@ -90,4 +96,12 @@ The OSSL v1.3 release standardizes organic carbon, total carbon, CaCO₃, total 
 
 Original source: [Zenodo record 17941270](https://zenodo.org/records/17941270). Contact: Julia Fohrafellner (AGES).
 
-This record was assembled from the OSSL v1.3 catalogue; the Zenodo deposit was not reopened during the pass.
+The earlier catalogue used the OSSL v1.3 representation. The current source checks and remaining limits are stated in verification_notes.
+
+
+## Quality and caveats
+
+**Record confidence: medium.** The original ESSD paper documents 2,129 samples, 680–2500 nm absorbance and fourteen reference-analysis columns; the OSSL card reports 2,131 rows. These scopes are not merged into one observed count. The Zenodo route was blocked, numerical files were not inspected and original-deposit reuse terms remain unconfirmed. The verification date is 2026-11-23 and covers current original paper and maintainer-card documentation, not scientific accuracy or every resource component.
+
+
+Review sources: [primary source 1](https://essd.copernicus.org/articles/18/219/2026/), [primary source 2](https://docs.soilspectroscopy.org/datasets/AUT.html).
