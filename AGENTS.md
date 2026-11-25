@@ -131,6 +131,11 @@ These come from the spec; follow them rather than inventing precision.
 
 ## Working conventions
 
+- **Shared contract.** `datasets/controlled-vocab.yaml`, `datasets/RECORD-FORMAT.md`
+  and `scripts/` are the shared contract: the vocabulary, the record schema and the
+  generators that read them. Do not change them unless unavoidable, and never as a side
+  effect of adding or editing a record. A genuinely new domain, field or validation rule
+  is a deliberate contract change, in its own commit.
 - **Commit grouping.** One concern per commit: pure `git mv` moves separate from
   content edits; record changes separate from index/doc regeneration; unrelated
   whitespace or config changes separate again. Do not bundle `.documents/`,
