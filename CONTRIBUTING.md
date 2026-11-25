@@ -11,8 +11,9 @@ Thank you for considering contributing to this project 🎉
    ```
 3. Make your changes
     You can:
-    - add a record under the matching domain folder in `datasets/`
-    - or create a new `.md` file if the dataset fits a different domain
+    - add a record at `datasets/records/<id>.md`, listing one or more domain slugs
+      from `controlled-vocab.yaml`
+    - or update an existing record if the dataset is already catalogued
 
     Each record starts with YAML front matter that satisfies
     [`datasets/RECORD-FORMAT.md`](datasets/RECORD-FORMAT.md), followed by prose with the
@@ -23,3 +24,6 @@ Thank you for considering contributing to this project 🎉
   ```
 5. Push to your fork
 6. Open a Pull Request
+
+    Before opening the PR, run `uv run scripts/validate_records.py` from the repository
+    root and fix anything it reports.
