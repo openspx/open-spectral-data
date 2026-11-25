@@ -17,13 +17,22 @@ which is authoritative if the two disagree.
 ```
 README.md                     Project intro; points at the dataset index
 CONTRIBUTING.md               Contributor-facing quick guide
-.gitignore                    Ignores .documents and .screenshots (tracked file)
+.gitignore                    Ignores .documents, .screenshots, .venv/ and
+                              __pycache__/ (tracked file)
 AGENTS.md                     This file
+pyproject.toml                uv project: requires-python >=3.11, PyYAML
+uv.lock                       Locked tooling dependencies; run scripts with uv run
+scripts/
+  build_indexes.py            Regenerates datasets/README.md and datasets/index/**
+  validate_records.py         Validates records and checks the generated pages
 datasets/
   README.md                   Catalogue landing page; generated, totals + domain rows
   RECORD-FORMAT.md            Field table, enums, body template, JSON Schema, example
   controlled-vocab.yaml       Domains (slug, domain_id, sequence) and enums, with aliases
   records/<id>.md             One record per dataset/collection/aggregator/portal
+  index/                      Generated browse pages: all, by type, by access
+    by-domain/<slug>.md       Generated page for each domain with at least one record
+.venv/                        Local environment; git-ignored
 .documents/                   Dated research output, notes, plans; git-ignored
 .screenshots/                 Scratch images; git-ignored
 ```
@@ -84,7 +93,7 @@ independent access route or it stays in the parent.
    `uv run scripts/build_indexes.py` and commit its output.
 7. **Update relationships.** If the record is a child or parent, edit the other side
    so `part_of`/`children` stay reciprocal, and add a `related` link where useful.
-8. **Validate before finishing:**
+8. **Validate before finishing.** Run `uv run scripts/validate_records.py`; it enforces:
    - front matter parses as YAML and satisfies §6 (required keys, enums, `id`/`domains`
      patterns, ISO dates, bare DOI without `https://doi.org/`);
    - `domains` is non-empty, duplicate-free, and every entry exists in
@@ -127,9 +136,9 @@ These come from the spec; follow them rather than inventing precision.
   whitespace or config changes separate again. Do not bundle `.documents/`,
   `.screenshots/` or stray `.DS_Store` files.
 - **Commit messages.** Imperative, scoped subjects, e.g.
-  `feat(datasets): add <id> record`, `docs(datasets): update domain index`,
-  `refactor(datasets): move records into domain folders`, `chore: ignore local notes`.
-  Put the reason in the body when it is not obvious.
+  `feat(datasets): add <id> record`, `docs(datasets): regenerate index pages`,
+  `refactor(datasets): move records into a flat store`. Put the reason in the body when
+  it is not obvious.
 - **Identity.** The repository's local git config is `openspex
   <dev.openspx@gmail.com>`. When a different author or committer is required, set
   `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME` and
