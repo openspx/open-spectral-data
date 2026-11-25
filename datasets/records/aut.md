@@ -2,8 +2,8 @@
 id: aut
 name: Austrian NIR soil spectral library (AUT)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: AGES
 landing_page: https://zenodo.org/records/17941270

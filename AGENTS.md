@@ -20,26 +20,23 @@ CONTRIBUTING.md               Contributor-facing quick guide
 .gitignore                    Ignores .documents and .screenshots (tracked file)
 AGENTS.md                     This file
 datasets/
-  README.md                   Domain index: one row per populated domain
+  README.md                   Catalogue landing page; generated, totals + domain rows
   RECORD-FORMAT.md            Field table, enums, body template, JSON Schema, example
-  controlled-vocab.yaml       Domains and enums, with accepted aliases
-  <domain>/                   One folder per populated domain
-    _index.md                 Generated-style table of that domain's records
-    <record-id>.md            One record per dataset/collection/aggregator/portal
+  controlled-vocab.yaml       Domains (slug, domain_id, sequence) and enums, with aliases
+  records/<id>.md             One record per dataset/collection/aggregator/portal
 .documents/                   Dated research output, notes, plans; git-ignored
 .screenshots/                 Scratch images; git-ignored
 ```
 
-Domain folders are unprefixed slugs (`soil-science`, not `01-soil-science`).
-`domain_id` is the stable key; ordering lives in `controlled-vocab.yaml` as
-`sequence`, never in folder names. Only domains that hold at least one record have
-a folder; the rest exist only in the vocabulary and gain a folder with their first
-record. `datasets/others/` is a holding area for datasets that do not fit a domain
-yet; it is not a domain (no `domain_id`, no `_index.md`, no README row), and anything
-placed there should move to a proper domain once one fits.
+Records live in one flat store, `datasets/records/<id>.md`; there are no domain folders.
+A record lists its domains in `domains`, using slugs defined in
+`controlled-vocab.yaml`, where `domain_id` is the stable key and `sequence` sets display
+order. The first entry is the lead domain, used for citations and page ordering. Domain
+membership is many-to-many: a record appears on every domain page it lists. There is no
+unassigned holding folder, so every record must name at least one existing domain.
 
-At the time of writing the populated domains are `soil-science` (1), `food-feed-quality`
-(3), `geoscience` (6) and `astronomy` (9); live counts are in [datasets/README.md](datasets/README.md).
+The domains currently in use are `soil-science`, `food-feed-quality`, `geoscience` and
+`astronomy`; live counts are in [datasets/README.md](datasets/README.md).
 
 ## How records relate
 
@@ -48,13 +45,11 @@ At the time of writing the populated domains are `soil-science` (1), `food-feed-
   schema), `portal` (access point with no single dataset).
 - `children` / `part_of` — parent-to-child links, and they must be reciprocal: the
   parent lists the child `id` in `children`, the child sets `part_of` to the parent
-  `id`. A `_index.md` row is not a relationship; use these fields.
+  `id`. A generated index row is not a relationship; use these fields.
 - `related` — free "read this too" links, not required to be reciprocal.
-- `cross_listed_in` — secondary domain slugs where a record is useful. The record
-  still lives in exactly one domain folder; never duplicate the file.
 - `supersedes` / `superseded_by` — deprecation chains.
 
-The working example is OSSL: [datasets/soil-science/ossl.md](datasets/soil-science/ossl.md)
+The working example is OSSL: [datasets/records/ossl.md](datasets/records/ossl.md)
 is an `aggregator` whose `children` are the 14 contributor records that have their
 own landing page/DOI and a download outside the OSSL bundle. Contributors whose only
 route is the OSSL release (KSSL, NEON, GEMAS, Geocradle, SRB) have no child record
@@ -63,16 +58,16 @@ independent access route or it stays in the parent.
 
 ## Add a new dataset
 
-1. **Choose the domain.** Read `domains` in
-   [datasets/controlled-vocab.yaml](datasets/controlled-vocab.yaml) and copy the
-   `domain_id` and `slug`. Use `cross_listed_in` only for genuine secondary use; the
-   file itself goes in the canonical domain folder.
+1. **Choose the domains.** Read `domains` in
+   [datasets/controlled-vocab.yaml](datasets/controlled-vocab.yaml) and copy one or
+   more existing slugs into `domains`, lead domain first. List every domain the dataset
+   genuinely serves; no numeric id goes in the record.
 2. **Choose the id.** Kebab-case, unique, matching `^[a-z0-9]+(-[a-z0-9]+)*$`.
    The filename is `<id>.md`; the front-matter `id` must equal it.
-3. **Create the record** at `datasets/<domain>/<id>.md` with YAML front matter and a
+3. **Create the record** at `datasets/records/<id>.md` with YAML front matter and a
    prose body.
-4. **Fill the front matter.** Required keys: `id`, `name`, `record_type`, `domain`,
-   `domain_id`, `host`, `landing_page`, `citation`, `platform`, `spectral_coverage`,
+4. **Fill the front matter.** Required keys: `id`, `name`, `record_type`, `domains`,
+   `host`, `landing_page`, `citation`, `platform`, `spectral_coverage`,
    `spectral_units`, `measurement_mode`, `reference_variables`, `access_class`,
    `licence`, `confidence`, `last_verified`. Everything else is optional; see the
    field table (§1), `reference_variables` rules (§2) and enums (§3) in
@@ -84,27 +79,20 @@ independent access route or it stays in the parent.
    Quality and caveats, Cross-references). Many existing records are terser — a single
    `# Title` plus prose. Match the spec for new work; do not restructure unrelated
    records.
-6. **Create the folder if needed.** If `datasets/<domain>/` does not exist, create it
-   and add `_index.md` modelled on an existing one: the generated-style header, a
-   heading, `N record(s).` line with schema/vocabulary links, and the table. Then add
-   a row for the domain to [datasets/README.md](datasets/README.md) — `domain_id`,
-   linked domain name, and record count.
-7. **Update indexes.** In the domain `_index.md`: bump the `N records.` line, add the
-   table row (`ID | Name | Type | Platform | Coverage | Count | Access | Licence |
-   Confidence`), keep rows sorted by `id`. Coverage is `REGION (unit)` joined with
-   `; `; counts show `unknown` when unqualified. Then update the count in
-   `datasets/README.md`. Both files say they are generated and there is no committed
-   generator, so keep them consistent by hand or with a local script.
-8. **Update relationships.** If the record is a child or parent, edit the other side
+6. **Regenerate the indexes.** Index pages are generated from front matter; do not
+   hand-edit `datasets/README.md` or any page under `datasets/index/`. Run
+   `uv run scripts/build_indexes.py` and commit its output.
+7. **Update relationships.** If the record is a child or parent, edit the other side
    so `part_of`/`children` stay reciprocal, and add a `related` link where useful.
-9. **Validate before finishing:**
-   - front matter parses as YAML and satisfies §6 (required keys, enums, `id`/`domain`
+8. **Validate before finishing:**
+   - front matter parses as YAML and satisfies §6 (required keys, enums, `id`/`domains`
      patterns, ISO dates, bare DOI without `https://doi.org/`);
+   - `domains` is non-empty, duplicate-free, and every entry exists in
+     `controlled-vocab.yaml`;
    - `spectral_units` equals the set of `unit` values in `spectral_coverage`;
    - every relative Markdown link resolves;
    - one H1 per record file;
-   - `_index.md` counts and rows match the files on disk, and `datasets/README.md`
-     matches the folders;
+   - regenerating the indexes (`uv run scripts/build_indexes.py`) leaves no diff;
    - `git diff --check` is clean.
 
 ## Honesty rules

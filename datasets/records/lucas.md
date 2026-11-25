@@ -2,8 +2,8 @@
 id: lucas
 name: LUCAS topsoil spectral collection
 record_type: collection
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: European Commission JRC / ESDAC
 landing_page: https://esdac.jrc.ec.europa.eu/projects/lucas

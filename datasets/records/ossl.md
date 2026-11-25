@@ -2,8 +2,8 @@
 id: ossl
 name: Open Soil Spectral Library (OSSL) v1.3
 record_type: aggregator
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: Soil Spectroscopy for Global Good
 landing_page: https://soilspectroscopy.org/

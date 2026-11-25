@@ -2,8 +2,8 @@
 id: nvcl
 name: National Virtual Core Library (NVCL)
 record_type: portal
-domain: geoscience
-domain_id: 6
+domains:
+- geoscience
 status: active
 host: AuScope
 landing_page: https://portal.auscope.org.au/

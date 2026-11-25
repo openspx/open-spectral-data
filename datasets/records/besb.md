@@ -2,8 +2,8 @@
 id: besb
 name: Brazilian Soil Spectral Library (BESB)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: Embrapa / University of São Paulo
 landing_page: https://zenodo.org/records/8361419

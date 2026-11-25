@@ -2,8 +2,8 @@
 id: hsdos
 name: Hungarian Soil Degradation Observation System spectral library (HSDOS)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: HUN-REN ATK
 landing_page: https://zenodo.org/records/14610222

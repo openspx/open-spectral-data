@@ -2,8 +2,8 @@
 id: lf-bra
 name: Farm-scale soil spectral library, Brazil (LF_BRA)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: Mendeley Data
 landing_page: https://data.mendeley.com/datasets/88c5kvmgbf/1

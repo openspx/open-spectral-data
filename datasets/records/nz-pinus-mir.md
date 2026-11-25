@@ -2,8 +2,8 @@
 id: nz-pinus-mir
 name: New Zealand Pinus radiata forest soil MIR library
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: figshare
 landing_page: https://figshare.com/articles/dataset/Soil_data_from_Pinus_radiata_forests_in_New_Zealand_FR380_trial_series/20506587/2

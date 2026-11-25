@@ -2,8 +2,8 @@
 id: kssl
 name: USDA-NRCS NCSS Kellogg Soil Survey Laboratory MIR library
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: USDA-NRCS
 landing_page:

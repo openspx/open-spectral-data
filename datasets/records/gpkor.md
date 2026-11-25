@@ -2,8 +2,8 @@
 id: gpkor
 name: Gyeonggi Province NIR soil spectral library, South Korea (GPKOR)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: figshare
 landing_page: https://doi.org/10.6084/m9.figshare.29380574

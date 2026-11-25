@@ -2,8 +2,8 @@
 id: cassl
 name: Central African Soil Spectral Library (CASSL)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: ETH Zurich / University of Zurich
 landing_page: https://github.com/laura-summerauer/ssl-central-africa

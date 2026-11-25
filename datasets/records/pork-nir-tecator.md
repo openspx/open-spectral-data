@@ -2,8 +2,8 @@
 id: pork-nir-tecator
 name: Minced pork meat NIR dataset (Tecator)
 record_type: dataset
-domain: food-feed-quality
-domain_id: 3
+domains:
+- food-feed-quality
 status: active
 host: Tecator / Carnegie Mellon StatLib
 landing_page: https://lib.stat.cmu.edu/datasets/tecator

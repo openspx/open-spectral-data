@@ -2,8 +2,8 @@
 id: ws-swind
 name: Southwestern India watershed soil spectral library (WS_SWIND)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: Zenodo
 landing_page: https://zenodo.org/records/5675793

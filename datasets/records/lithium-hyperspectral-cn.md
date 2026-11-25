@@ -2,8 +2,8 @@
 id: lithium-hyperspectral-cn
 name: Clay-type lithium deposit proximal hyperspectral dataset (China)
 record_type: dataset
-domain: geoscience
-domain_id: 6
+domains:
+- geoscience
 status: active
 host: Zenodo
 landing_page: https://zenodo.org/records/19142250

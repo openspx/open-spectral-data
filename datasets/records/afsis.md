@@ -2,8 +2,8 @@
 id: afsis
 name: Africa Soil Information Service (AfSIS) spectral collection
 record_type: collection
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: World Agroforestry (ICRAF)
 landing_page: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/QXCWP1

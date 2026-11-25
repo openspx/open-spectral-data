@@ -2,8 +2,8 @@
 id: afsis-tansis
 name: AfSIS Phase 2 — TanSIS (Tanzania)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: World Agroforestry (ICRAF)
 landing_page: https://data.worldagroforestry.org/dataset.xhtml?persistentId=doi:10.34725/DVN/XUDGJY

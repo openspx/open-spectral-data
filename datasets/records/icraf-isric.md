@@ -2,8 +2,8 @@
 id: icraf-isric
 name: ICRAF-ISRIC global VNIR soil spectral library
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: ISRIC — World Soil Information / ICRAF
 landing_page: https://data.isric.org/geonetwork/srv/eng/catalog.search#/metadata/1081ac75-78f7-4db3-b8cc-23b78a3aa769

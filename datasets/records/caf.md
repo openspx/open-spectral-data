@@ -2,8 +2,8 @@
 id: caf
 name: Central Africa soil spectral library (CAF)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: ETH Zurich
 landing_page: https://doi.org/10.5281/zenodo.6786666

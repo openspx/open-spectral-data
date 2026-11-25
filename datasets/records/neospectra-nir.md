@@ -2,8 +2,8 @@
 id: neospectra-nir
 name: NeoSpectra handheld NIR soil spectral dataset
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: Zenodo
 landing_page: https://zenodo.org/records/13122321

@@ -33,10 +33,16 @@ list is an explicit statement and a missing key is not.
 | `name` | string | required | Full human-readable dataset name. |
 | `aliases` | list[string] | optional | Acronyms, former names and catalogue identifiers. |
 | `record_type` | enum | required | `dataset`, `collection`, `aggregator` or `portal`. |
-| `domain` | string | required | Folder slug for the canonical domain, e.g. `geoscience`. |
-| `domain_id` | integer | required | Numeric domain key (1–10); the stable ordering key. |
+| `domains` | list[string] | required | One or more domain slugs defined in `controlled-vocab.yaml`; the first entry is the lead domain, used for citations and page ordering. |
 | `status` | enum | optional | `active` (default), `deprecated` or `draft`. |
 | `version` | string | optional | Dataset version or release label, e.g. `1.0`, `2024-06`. |
+
+`domains` is non-empty, contains no duplicates, and every slug must exist in
+`controlled-vocab.yaml`. The first entry is the lead domain: it is used for citations
+and to order the record within generated pages. Multi-domain membership is first-class —
+a record that is genuinely useful in two domains lists both, with no separate
+secondary-listing field. `domain_id` is a vocabulary-only key; records reference
+domains by slug and never carry the numeric id.
 
 ### Provenance
 
@@ -127,7 +133,6 @@ not mean "recently checked" and must not be read as a freshness signal.
 | `related` | list[string] | optional | Other record `id` values worth reading alongside this one. |
 | `part_of` | string or null | optional | Parent record `id` for a child dataset. |
 | `children` | list[string] | optional | Child record `id` values for a collection or aggregator. |
-| `cross_listed_in` | list[string] | optional | Secondary domain slugs where the record should also appear. |
 | `supersedes` | list[string] | optional | Older record `id` values replaced by this one. |
 | `superseded_by` | string or null | optional | Replacement record `id`, if this one is deprecated. |
 
@@ -169,6 +174,13 @@ silently presented as an observation.
 These values are normative and mirror `datasets/controlled-vocab.yaml`, which is
 authoritative and also records accepted aliases. Adding a value requires editing both
 files together.
+
+### `domains`
+
+The domain slug set is closed and defined in `datasets/controlled-vocab.yaml`, which
+also holds each domain's numeric `domain_id` and its display `sequence`. A record lists
+one or more of those slugs in `domains` and never carries `domain_id`. A domain with no
+records is still valid vocabulary; it simply has nothing to show.
 
 ### `record_type`
 
@@ -322,8 +334,7 @@ required:
   - id
   - name
   - record_type
-  - domain
-  - domain_id
+  - domains
   - host
   - landing_page
   - citation
@@ -386,12 +397,13 @@ properties:
     uniqueItems: true
   record_type:
     enum: [dataset, collection, aggregator, portal]
-  domain:
-    type: string
-    pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
-  domain_id:
-    type: integer
-    minimum: 1
+  domains:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
   status:
     enum: [active, deprecated, draft]
   version:
@@ -559,10 +571,6 @@ properties:
     type: array
     items: {type: string}
     uniqueItems: true
-  cross_listed_in:
-    type: array
-    items: {type: string}
-    uniqueItems: true
   supersedes:
     type: array
     items: {type: string}
@@ -570,6 +578,10 @@ properties:
   superseded_by:
     type: [string, "null"]
 ```
+
+The schema checks that `domains` is a non-empty, duplicate-free array of slug-shaped
+strings. Membership in `controlled-vocab.yaml` is enforced by the validator instead, so
+the vocabulary is not duplicated here.
 
 ---
 
@@ -586,8 +598,7 @@ id: example-mineral-reflectance
 name: Example mineral reflectance library
 aliases: [EMRL]
 record_type: dataset
-domain: geoscience
-domain_id: 6
+domains: [geoscience]
 status: active
 version: "1.0"
 
@@ -675,7 +686,6 @@ verification_notes: Illustrative record; no underlying source was checked.
 related: []
 part_of: null
 children: []
-cross_listed_in: []
 supersedes: []
 superseded_by: null
 ---
@@ -730,8 +740,9 @@ satellite hyperspectral mineral mapping as a laboratory reference set.
 
 Before adding a record:
 
-1. Choose the canonical domain and its `domain_id`; add `cross_listed_in` only if the
-   dataset is genuinely useful in another domain.
+1. Choose the domains and copy each slug from `domains` in
+   `controlled-vocab.yaml`; the first entry is the lead domain. List every domain the
+   dataset genuinely serves — there is no separate secondary-listing field.
 2. Set `record_type` correctly. If the file describes an umbrella or a portal, say so and
    link `children` rather than writing a single pseudo-dataset.
 3. Fill every required field. Use `unknown` for an unverified licence and `low` for an

@@ -2,8 +2,8 @@
 id: hlf-can
 name: High-latitude forest soil spectral library, northern Canada (HLF_CAN)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: University of Zurich
 landing_page: https://zenodo.org/records/10609291

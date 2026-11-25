@@ -2,8 +2,8 @@
 id: pds-spectra
 name: NASA PDS Geosciences Node Spectral Library and RELAB
 record_type: portal
-domain: astronomy
-domain_id: 9
+domains:
+- astronomy
 status: active
 host: NASA PDS Geosciences Node / Washington University in St. Louis
 landing_page: https://pds-speclib.rsl.wustl.edu/

@@ -2,8 +2,8 @@
 id: mtq
 name: Martinique NIR soil spectral library (MTQ)
 record_type: dataset
-domain: soil-science
-domain_id: 1
+domains:
+- soil-science
 status: active
 host: IRD Dataverse
 landing_page: https://dataverse.ird.fr/dataset.xhtml?persistentId=doi:10.23708/C2TV6W
