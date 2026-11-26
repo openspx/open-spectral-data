@@ -1,2 +1,4 @@
 .documents
 .screenshots
+.venv/
+__pycache__/

@@ -33,10 +33,16 @@ list is an explicit statement and a missing key is not.
 | `name` | string | required | Full human-readable dataset name. |
 | `aliases` | list[string] | optional | Acronyms, former names and catalogue identifiers. |
 | `record_type` | enum | required | `dataset`, `collection`, `aggregator` or `portal`. |
-| `domain` | string | required | Folder slug for the canonical domain, e.g. `geoscience`. |
-| `domain_id` | integer | required | Numeric domain key from `controlled-vocab.yaml`; existing keys are permanent. |
+| `domains` | list[string] | required | One or more domain slugs defined in `controlled-vocab.yaml`; the first entry is the lead domain, used for citations and page ordering. |
 | `status` | enum | optional | `active` (default), `deprecated` or `draft`. |
 | `version` | string | optional | Dataset version or release label, e.g. `1.0`, `2024-06`. |
+
+`domains` is non-empty, contains no duplicates, and every slug must exist in
+`controlled-vocab.yaml`. The first entry is the lead domain: it is used for citations
+and to order the record within generated pages. Multi-domain membership is first-class —
+a record that is genuinely useful in two domains lists both, with no separate
+secondary-listing field. `domain_id` is a vocabulary-only key; records reference
+domains by slug and never carry the numeric id.
 
 ### Provenance
 
@@ -112,21 +118,13 @@ breakdown is known.
 | `known_gaps` | list[string] | optional | Missing variables, sparse columns, limited coverage. |
 | `harmonisation_issues` | list[string] | optional | Unit, method or calibration incompatibilities with other datasets. |
 | `confidence` | enum | required | `high`, `medium` or `low`, reflecting how well the record was verified. |
-| `last_verified` | date or null | required | Date of the source check described in verification_notes; may be a supported historical date. Null without adequate dated source evidence. |
+| `last_verified` | date or null | required | Date the source was actually checked; null when only repository prose was read. |
 | `verification_notes` | string | optional | What was checked and what could not be confirmed. |
 
-`last_verified` records the date of the source check explicitly described in
-`verification_notes`. It may inherit a historical date only when a dated verification
-record identifies the primary source/artifact, what was checked and the applicable
-release or subset. Reading or transferring that evidence does not refresh its date.
-
-A new check of provider documentation can establish a new **documentation-review**
-date, but the notes must distinguish it from historical numerical-file checks and
-uninspected claims. A local primary-file/header review must likewise be identified as
-local, not a fresh provider-web check. A retrieval timestamp alone, a failed endpoint,
-an undated secondary summary or the transfer date is insufficient. Keep `null` when no
-defensible dated source check supports the record's stated scope. A date never means
-every portal/library claim or every file was checked on that day.
+`last_verified` is set only when the underlying source was actually checked. Use `null`
+when the record was assembled from repository prose without re-checking the source. A
+null value means "copied from repo prose, not re-verified against the source"; it does
+not mean "recently checked" and must not be read as a freshness signal.
 
 ### Cross-references
 
@@ -135,7 +133,6 @@ every portal/library claim or every file was checked on that day.
 | `related` | list[string] | optional | Other record `id` values worth reading alongside this one. |
 | `part_of` | string or null | optional | Parent record `id` for a child dataset. |
 | `children` | list[string] | optional | Child record `id` values for a collection or aggregator. |
-| `cross_listed_in` | list[string] | optional | Secondary domain slugs where the record should also appear. |
 | `supersedes` | list[string] | optional | Older record `id` values replaced by this one. |
 | `superseded_by` | string or null | optional | Replacement record `id`, if this one is deprecated. |
 
@@ -178,6 +175,13 @@ These values are normative and mirror `datasets/controlled-vocab.yaml`, which is
 authoritative and also records accepted aliases. Adding a value requires editing both
 files together.
 
+### `domains`
+
+The domain slug set is closed and defined in `datasets/controlled-vocab.yaml`, which
+also holds each domain's numeric `domain_id` and its display `sequence`. A record lists
+one or more of those slugs in `domains` and never carries `domain_id`. A domain with no
+records is still valid vocabulary; it simply has nothing to show.
+
 ### `record_type`
 
 `dataset` · `collection` · `aggregator` · `portal`
@@ -211,8 +215,6 @@ proximal instruments.
 `reflectance` · `transmittance` · `absorbance` · `radiance` · `irradiance` ·
 `emission` · `flux` · `other`
 
-Non-optical records use `other` when they store impedance, NMR signals, mass-peak intensity, gamma counts or optical constants rather than one of the optical quantities. Explain the signal and any simulation in `intensity_units` and Acquisition.
-
 `flux` covers astronomical spectra where the recorded quantity is calibrated or relative
 flux rather than reflectance or radiance. Use `other` with an explanation in
 `intensity_units` when none of these fit.
@@ -236,23 +238,15 @@ one range.
 
 `um` is ASCII for micrometres. `cm-1` is wavenumber, used mainly for MIR and Raman.
 
-`mz` denotes mass-to-charge (m/z); `ppm` denotes NMR chemical shift. `hz`, `thz` and `kev` are canonical spellings of Hz, THz and keV. Use `channel` only for an explicitly indexed band/bin axis and `unknown` when the physical axis unit is not established. These markers are not physical-unit conversions and require an explanation in `known_gaps`. Do not invent wavelength or energy coordinates.
-
+Additional non-optical axes: `mz` means mass-to-charge, `ppm` NMR chemical shift, `hz`/`thz` frequency, and `kev` photon energy. `channel` is an indexed axis and `unknown` explicitly records an unestablished unit; explain either marker in `known_gaps`. Use measurement mode `other` for non-optical signals and describe the stored quantity.
 
 ### `confidence`
 
 `high` · `medium` · `low`
 
-- `high` — key descriptive fields have direct primary-source support and relevant file checks; counts are recomputed where possible. The assessment is limited to the stated release/file set.
-- `medium` — primary source or main metadata is supported, but some methods, counts, provenance or other details remain documentation-based or unresolved.
-- `low` — important claims lack adequate evidence, provenance is unclear, or the description relies mainly on unsupported secondary information.
-
-Confidence assesses the **catalogue description**, not scientific accuracy, independent
-ground truth, project suitability or unrestricted reuse. It is independent of `status`
-and the verification date. Historical primary evidence can support confidence; an
-inspected subset does not validate its parent library. Unknowns and restrictions must
-remain explicit, and a narrow well-supported record need not be low merely because
-the full resource was not downloaded.
+- `high` — key fields checked directly against the source and counts recomputed where possible.
+- `medium` — landing page and main metadata checked; some counts or methods taken from documentation.
+- `low` — record assembled from secondary sources or memory; treat as provisional.
 
 ### `reference_variables[].kind`
 
@@ -264,11 +258,9 @@ the full resource was not downloaded.
 
 After the closing `---` of the front matter, use these headings in this order. Omit a
 section only if it is genuinely empty; do not replace the structure with unlabelled
-prose. Use exactly one H1 title (`# Dataset name`) per record.
+prose.
 
 ```markdown
-# Dataset name
-
 ## Summary
 
 Two to four sentences: what the dataset is, what it covers, and why someone would use it.
@@ -299,7 +291,7 @@ licence. Repeat any restriction that is easy to miss.
 
 Known gaps, calibration or method differences that limit reuse, and anything that would
 mislead a user who reads only the front matter. State whether `last_verified` is null
-and why; null means no defensible dated source check is established.
+and why; null means repo-only, not recently checked.
 
 ## Cross-references
 
@@ -344,8 +336,7 @@ required:
   - id
   - name
   - record_type
-  - domain
-  - domain_id
+  - domains
   - host
   - landing_page
   - citation
@@ -408,12 +399,13 @@ properties:
     uniqueItems: true
   record_type:
     enum: [dataset, collection, aggregator, portal]
-  domain:
-    type: string
-    pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
-  domain_id:
-    type: integer
-    minimum: 1
+  domains:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
   status:
     enum: [active, deprecated, draft]
   version:
@@ -566,7 +558,7 @@ properties:
   last_verified:
     type: [string, "null"]
     format: date
-    description: Date of the explicitly scoped source check, including supported historical evidence; null without defensible dated source evidence.
+    description: Null means copied from repo prose, not re-verified against the source.
   verification_notes:
     type: string
     minLength: 1
@@ -581,10 +573,6 @@ properties:
     type: array
     items: {type: string}
     uniqueItems: true
-  cross_listed_in:
-    type: array
-    items: {type: string}
-    uniqueItems: true
   supersedes:
     type: array
     items: {type: string}
@@ -592,6 +580,10 @@ properties:
   superseded_by:
     type: [string, "null"]
 ```
+
+The schema checks that `domains` is a non-empty, duplicate-free array of slug-shaped
+strings. Membership in `controlled-vocab.yaml` is enforced by the validator instead, so
+the vocabulary is not duplicated here.
 
 ---
 
@@ -608,8 +600,7 @@ id: example-mineral-reflectance
 name: Example mineral reflectance library
 aliases: [EMRL]
 record_type: dataset
-domain: geoscience
-domain_id: 6
+domains: [geoscience]
 status: active
 version: "1.0"
 
@@ -697,7 +688,6 @@ verification_notes: Illustrative record; no underlying source was checked.
 related: []
 part_of: null
 children: []
-cross_listed_in: []
 supersedes: []
 superseded_by: null
 ---
@@ -748,16 +738,13 @@ satellite hyperspectral mineral mapping as a laboratory reference set.
 
 ---
 
-New domains append a new permanent ID in `controlled-vocab.yaml`; never renumber existing domains. Existing broad domains may remain registered without a populated folder. For an approved merge, move records to the destination domain and its existing ID, record old folder slugs in `domain_aliases`, and reserve removed IDs in `retired_domains`. A retired ID is never reassigned. Domain aliases are migration information, not valid canonical record domains.
-
-Domain indexes sort by stable record `id`, not display name. Show `unknown` when a count lacks an established qualifier. Dated research output and review notes belong under the ignored `.documents/<YYYY-MM-DD>/` folder, not in `datasets/`.
-
 ## 8. Contribution checklist
 
 Before adding a record:
 
-1. Choose the canonical domain and its `domain_id`; add `cross_listed_in` only if the
-   dataset is genuinely useful in another domain.
+1. Choose the domains and copy each slug from `domains` in
+   `controlled-vocab.yaml`; the first entry is the lead domain. List every domain the
+   dataset genuinely serves — there is no separate secondary-listing field.
 2. Set `record_type` correctly. If the file describes an umbrella or a portal, say so and
    link `children` rather than writing a single pseudo-dataset.
 3. Fill every required field. Use `unknown` for an unverified licence and `low` for an
