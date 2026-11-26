@@ -4,14 +4,27 @@
 
 This folder holds one Markdown record per spectral dataset, collection, aggregator or portal. Each record starts with YAML front matter followed by prose. The format is defined in [RECORD-FORMAT.md](RECORD-FORMAT.md); allowed values are listed in [controlled-vocab.yaml](controlled-vocab.yaml).
 
-24 records across 4 domains.
+65 records, 69 domain memberships across 17 domains.
 
 | ID | Domain | Records |
 |---|---|---|
-| 1 | [Soil science and digital soil mapping](index/by-domain/soil-science.md) | 20 |
-| 3 | [Food and feed quality, authenticity, and safety](index/by-domain/food-feed-quality.md) | 1 |
-| 6 | [Geoscience and geological materials](index/by-domain/geoscience.md) | 2 |
-| 9 | [Astronomy](index/by-domain/astronomy.md) | 1 |
+| 1 | [Soil science and digital soil mapping](index/by-domain/soil-science.md) | 25 |
+| 2 | [Precision agriculture and crop/plant phenotyping](index/by-domain/precision-agriculture.md) | 1 |
+| 3 | [Food and feed quality, authenticity, and safety](index/by-domain/food-feed-quality.md) | 9 |
+| 4 | [Pharmaceuticals and process analytical technology (PAT)](index/by-domain/pharma-pat.md) | 1 |
+| 5 | [Remote sensing and Earth observation](index/by-domain/remote-sensing.md) | 4 |
+| 6 | [Geoscience and planetary materials](index/by-domain/geoscience.md) | 6 |
+| 7 | [Medical and biological spectroscopy](index/by-domain/medical-biological.md) | 2 |
+| 8 | [Forensics](index/by-domain/forensics.md) | 1 |
+| 9 | [Astronomy](index/by-domain/astronomy.md) | 3 |
+| 10 | [Art conservation and cultural heritage](index/by-domain/art-conservation.md) | 2 |
+| 11 | [Aquatic ecology and water quality](index/by-domain/aquatic-ecology-water-quality.md) | 1 |
+| 12 | [Batteries and electrochemical energy storage](index/by-domain/batteries-electrochemical-energy.md) | 1 |
+| 14 | [Materials characterisation and recycling](index/by-domain/materials-characterisation-recycling.md) | 4 |
+| 16 | [Molecular chemistry and metabolomics](index/by-domain/molecular-chemistry-metabolomics.md) | 6 |
+| 17 | [Petroleum and fuel quality](index/by-domain/petroleum-fuel-quality.md) | 1 |
+| 19 | [Plant functional ecology and forestry](index/by-domain/plant-functional-ecology-forestry.md) | 1 |
+| 21 | [Radiation monitoring and nuclear spectroscopy](index/by-domain/radiation-nuclear-spectroscopy.md) | 1 |
 
 Counts: a bare number is exact, `>=N` is at least N, `~N` is approximate, and `N?` marks an unqualified count.
 

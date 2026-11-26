@@ -2,10 +2,18 @@
 
 # Food and feed quality, authenticity, and safety
 
-1 record(s); 1 list this as the lead domain.
+9 record(s); 8 list this as the lead domain.
 
 Schema: [RECORD-FORMAT.md](../../RECORD-FORMAT.md) · Vocabulary: [controlled-vocab.yaml](../../controlled-vocab.yaml) · All records: [all.md](../all.md)
 
 | ID | Name | Type | Domains | Platform | Coverage | Count | Access | Licence | Confidence |
 |---|---|---|---|---|---|---|---|---|---|
-| [pork-nir-tecator](../../records/pork-nir-tecator.md) | Minced pork meat NIR dataset (Tecator) | dataset | food-feed-quality | laboratory | NIR (nm) | 215 | open | Public Domain (Tecator terms) | medium |
+| [coconut-milk-water-ftir](../../records/coconut-milk-water-ftir.md) | Coconut milk water-adulteration FTIR data | dataset | food-feed-quality | laboratory | selected workbook wavelength headers; provider labels nm (nm) | 42 | open | CC-BY-4.0 | medium |
+| [corn-eigenvector](../../records/corn-eigenvector.md) | Corn | dataset | food-feed-quality | laboratory | near-infrared (nm) | 80 | open | unknown | medium |
+| [honey-botanical-gc-ims](../../records/honey-botanical-gc-ims.md) | Honey botanical-origin gas chromatography–ion mobility data | dataset | food-feed-quality | laboratory | chromatographic retention / ion-mobility drift coordinates (unknown) | unknown | open | CC-BY-4.0 | medium |
+| [mango-dry-matter-anderson](../../records/mango-dry-matter-anderson.md) | Australian mango dry matter and near-infrared spectra | dataset | food-feed-quality | laboratory | visible / near-infrared; original series coverage (nm) | unknown | open | CC-BY-4.0 | medium |
+| [massbank](../../records/massbank.md) | MassBank | portal | molecular-chemistry-metabolomics, food-feed-quality | laboratory | mass-to-charge (mz) | unknown | open | CC-BY-SA for selected AAFC records; database terms vary | medium |
+| [milk-composition-transmittance-nir](../../records/milk-composition-transmittance-nir.md) | Milk composition near-infrared transmittance data | dataset | food-feed-quality | laboratory | near-infrared (nm) | 1224 | open | CC-BY-4.0 | medium |
+| [pork-nir-tecator](../../records/pork-nir-tecator.md) | Tecator meat | dataset | food-feed-quality | laboratory | near-infrared (nm) | 215 | open | unknown | high |
+| [sugar-process](../../records/sugar-process.md) | Sugar Process | dataset | food-feed-quality | laboratory | fluorescence excitation (nm); fluorescence emission (nm) | 268 | open | unknown | medium |
+| [uwa-wheat-sprouting-ftir](../../records/uwa-wheat-sprouting-ftir.md) | UWA germinated-wheat flour FTIR data | dataset | food-feed-quality | laboratory | infrared; stored axis unit and endpoints unverified (unknown) | unknown | open | CC BY-SA (version not established) | medium |

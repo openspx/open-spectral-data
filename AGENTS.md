@@ -4,11 +4,10 @@ Instructions for agents working in this repository.
 
 ## What this project is
 
-`open-spectral-data` is a catalogue of open spectral datasets across ten domains
-(soil science, precision agriculture, food and feed, pharmaceutical PAT, remote
-sensing, geoscience, medical and biological, forensics, astronomy, art
-conservation). Each dataset is described by one Markdown record: YAML front matter
-plus a prose body. The schema lives in [datasets/RECORD-FORMAT.md](datasets/RECORD-FORMAT.md);
+`open-spectral-data` is a catalogue with 65 records across 17 registered domains,
+17 of which have records, as of 26 November 2026. Records describe datasets,
+collections, aggregators and portals; they are not necessarily independent data.
+Each record is one Markdown file with YAML front matter plus a prose body. The schema lives in [datasets/RECORD-FORMAT.md](datasets/RECORD-FORMAT.md);
 its enumerations live in [datasets/controlled-vocab.yaml](datasets/controlled-vocab.yaml),
 which is authoritative if the two disagree.
 
@@ -44,8 +43,32 @@ order. The first entry is the lead domain, used for citations and page ordering.
 membership is many-to-many: a record appears on every domain page it lists. There is no
 unassigned holding folder, so every record must name at least one existing domain.
 
-The domains currently in use are `soil-science`, `food-feed-quality`, `geoscience` and
-`astronomy`; live counts are in [datasets/README.md](datasets/README.md).
+The domain memberships as of 26 November 2026 are hard-coded below. A record may
+appear in multiple domains; these membership counts must not be added as independent
+dataset totals. Update this table and the opening counts when the catalogue changes.
+
+| Domain ID | Domain slug | Records |
+|---|---|---|
+| 1 | `soil-science` | 25 |
+| 2 | `precision-agriculture` | 1 |
+| 3 | `food-feed-quality` | 9 |
+| 4 | `pharma-pat` | 1 |
+| 5 | `remote-sensing` | 4 |
+| 6 | `geoscience` | 6 |
+| 7 | `medical-biological` | 2 |
+| 8 | `forensics` | 1 |
+| 9 | `astronomy` | 3 |
+| 10 | `art-conservation` | 2 |
+| 11 | `aquatic-ecology-water-quality` | 1 |
+| 12 | `batteries-electrochemical-energy` | 1 |
+| 14 | `materials-characterisation-recycling` | 4 |
+| 16 | `molecular-chemistry-metabolomics` | 6 |
+| 17 | `petroleum-fuel-quality` | 1 |
+| 19 | `plant-functional-ecology-forestry` | 1 |
+| 21 | `radiation-nuclear-spectroscopy` | 1 |
+
+There are **65 unique records**, **17 registered domains** and **17 populated domain pages**.
+Precision agriculture is a secondary domain of one record. Records belong in the flat store, not domain folders.
 
 ## How records relate
 

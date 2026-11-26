@@ -2,31 +2,72 @@
 
 # All records
 
-24 records.
+65 records.
 
 | ID | Name | Type | Domains | Platform | Coverage | Count | Access | Licence | Confidence |
 |---|---|---|---|---|---|---|---|---|---|
-| [afsis](../records/afsis.md) | Africa Soil Information Service (AfSIS) spectral collection | collection | soil-science | laboratory | MIR (cm-1) | ~18500 | open | CC-BY-4.0 | medium |
-| [afsis-ghasis](../records/afsis-ghasis.md) | AfSIS Phase 2 — GhaSIS (Ghana) | dataset | soil-science | laboratory | MIR (cm-1) | 3433 | open | CC-BY-4.0 | medium |
-| [afsis-nisis](../records/afsis-nisis.md) | AfSIS Phase 2 — NiSIS (Nigeria) | dataset | soil-science | laboratory | MIR (cm-1) | 1491 | open | CC-BY-4.0 | medium |
-| [afsis-tansis](../records/afsis-tansis.md) | AfSIS Phase 2 — TanSIS (Tanzania) | dataset | soil-science | laboratory | MIR (cm-1) | 29300 | open | CC-BY-4.0 | medium |
-| [aut](../records/aut.md) | Austrian NIR soil spectral library (AUT) | dataset | soil-science | laboratory | NIR (nm) | 2129 | open | CC-BY-4.0 | medium |
-| [besb](../records/besb.md) | Brazilian Soil Spectral Library (BESB) | dataset | soil-science | laboratory | VNIR (nm); MIR (cm-1) | 16084 | open | CC-BY-4.0 | medium |
-| [caf](../records/caf.md) | Central Africa soil spectral library (CAF) | dataset | soil-science | laboratory | MIR (cm-1) | 1852 | open | CC-BY-4.0 | medium |
-| [cassl](../records/cassl.md) | Central African Soil Spectral Library (CASSL) | dataset | soil-science | laboratory | MIR (cm-1) | 1800 | open | unknown | medium |
-| [gpkor](../records/gpkor.md) | Gyeonggi Province NIR soil spectral library, South Korea (GPKOR) | dataset | soil-science | laboratory | NIR (nm) | 1500 | open | CC-BY-4.0 | medium |
-| [hlf-can](../records/hlf-can.md) | High-latitude forest soil spectral library, northern Canada (HLF_CAN) | dataset | soil-science | laboratory | MIR (cm-1) | 289 | open | CC-BY-4.0 | medium |
-| [hsdos](../records/hsdos.md) | Hungarian Soil Degradation Observation System spectral library (HSDOS) | dataset | soil-science | laboratory | VNIR (nm) | 5490 | open | CC-BY-4.0 | medium |
-| [icraf-isric](../records/icraf-isric.md) | ICRAF-ISRIC global VNIR soil spectral library | dataset | soil-science | laboratory | VNIR (nm) | 4438 | open | CC-BY-4.0 | medium |
-| [kssl](../records/kssl.md) | USDA-NRCS NCSS Kellogg Soil Survey Laboratory MIR library | dataset | soil-science | laboratory | MIR (cm-1) | >=20000 | open | unknown | low |
+| [aalto-element-spectra](../records/aalto-element-spectra.md) | Aalto element spectra | collection | materials-characterisation-recycling | laboratory | selected processed iron emission curve (nm) | unknown | open | CC-BY-SA-4.0 (provider page) | medium |
+| [afsis](../records/afsis.md) | Africa Soil Information Service (AfSIS) spectral collection | collection | soil-science | laboratory | MIR (cm-1) | unknown | open | unknown | medium |
+| [afsis-ghasis](../records/afsis-ghasis.md) | AfSIS Phase 2 — GhaSIS (Ghana) | dataset | soil-science | laboratory | MIR (cm-1) | 3433 | open | unknown | medium |
+| [afsis-nisis](../records/afsis-nisis.md) | AfSIS Phase 2 — NiSIS (Nigeria) | dataset | soil-science | laboratory | MIR (cm-1) | 1491 | open | unknown | medium |
+| [afsis-tansis](../records/afsis-tansis.md) | AfSIS Phase 2 — TanSIS (Tanzania) | dataset | soil-science | laboratory | MIR (cm-1) | 29300 | open | unknown | medium |
+| [agroscope-ssl-2024](../records/agroscope-ssl-2024.md) | Agroscope soil spectral library 2024 | dataset | soil-science | laboratory | visible / near-infrared (nm) | 134 | open | CC-BY-NC-SA-4.0 | medium |
+| [aut](../records/aut.md) | Austrian NIR soil spectral library (AUT) | dataset | soil-science | laboratory | NIR (nm) | 2129 | open | unknown | medium |
+| [bacteria-id](../records/bacteria-id.md) | Bacteria-ID | dataset | medical-biological | laboratory | Raman shift (cm-1) | unknown | open | unknown | medium |
+| [battery-state-of-charge](../records/battery-state-of-charge.md) | Battery state-of-charge dataset | dataset | batteries-electrochemical-energy | laboratory | provider-documented impedance frequencies (hz) | 3 | open | CC-BY-4.0 (documentation) | medium |
+| [besb](../records/besb.md) | Brazilian Soil Spectral Library | dataset | soil-science | laboratory | selected visible/near-infrared (nm) | unknown | open | CC-BY (source-card attribution terms) | medium |
+| [bmrb-metabolomics](../records/bmrb-metabolomics.md) | BMRB metabolomics | portal | molecular-chemistry-metabolomics | laboratory | assigned NMR chemical shifts (ppm) | unknown | open | unknown | medium |
+| [cabo-leaf-spectra](../records/cabo-leaf-spectra.md) | CABO leaf spectra v2 | dataset | plant-functional-ecology-forestry, precision-agriculture, remote-sensing | laboratory | selected leaf reflectance (nm) | unknown | open | Creative Commons Attribution (provider terms) | high |
+| [caf](../records/caf.md) | Central Africa soil spectral library (CAF) | dataset | soil-science | laboratory | MIR (cm-1) | 1852 | open | unknown | medium |
+| [cassl](../records/cassl.md) | Central African Soil Spectral Library (CASSL) | dataset | soil-science | laboratory | MIR (cm-1) | >=1800 | open | unknown | medium |
+| [coconut-milk-water-ftir](../records/coconut-milk-water-ftir.md) | Coconut milk water-adulteration FTIR data | dataset | food-feed-quality | laboratory | selected workbook wavelength headers; provider labels nm (nm) | 42 | open | CC-BY-4.0 | medium |
+| [corn-eigenvector](../records/corn-eigenvector.md) | Corn | dataset | food-feed-quality | laboratory | near-infrared (nm) | 80 | open | unknown | medium |
+| [csic-probefield](../records/csic-probefield.md) | CSIC ProbeField soil spectra and laboratory references | dataset | soil-science | laboratory | visible / near-infrared (nm) | unknown | open | CC BY-NC-SA (version not established) | medium |
+| [ecostress-spectral-library](../records/ecostress-spectral-library.md) | ECOSTRESS Spectral Library | aggregator | geoscience | laboratory | visible / infrared; component-dependent (nm) | unknown | on-request | unknown | medium |
+| [gasoline-benchmark](../records/gasoline-benchmark.md) | Gasoline benchmark | dataset | petroleum-fuel-quality | laboratory | near-infrared (nm) | 60 | open | unknown | high |
+| [gloria](../records/gloria.md) | GLORIA | dataset | aquatic-ecology-water-quality | field | remote-sensing reflectance (nm) | unknown | open | CC-BY-4.0 | high |
+| [gpkor](../records/gpkor.md) | Gyeonggi Province NIR soil spectral library, South Korea (GPKOR) | dataset | soil-science | laboratory | provider-documented NIR (nm) | 1500 | open | CC-BY-4.0 | medium |
+| [hlf-can](../records/hlf-can.md) | High-latitude forest soil spectral library, northern Canada (HLF_CAN) | dataset | soil-science | laboratory | MIR (cm-1) | 289 | open | unknown | medium |
+| [honey-botanical-gc-ims](../records/honey-botanical-gc-ims.md) | Honey botanical-origin gas chromatography–ion mobility data | dataset | food-feed-quality | laboratory | chromatographic retention / ion-mobility drift coordinates (unknown) | unknown | open | CC-BY-4.0 | medium |
+| [hsdos](../records/hsdos.md) | Hungarian Soil Degradation Observation System spectral library (HSDOS) | dataset | soil-science | laboratory | VNIR (nm) | 5490 | open | unknown | medium |
+| [icraf-isric](../records/icraf-isric.md) | ICRAF–ISRIC soil library | dataset | soil-science | laboratory | selected visible/near-infrared (nm) | unknown | open | CC-BY (source-card attribution terms) | medium |
+| [indian-pines](../records/indian-pines.md) | Indian Pines | dataset | remote-sensing | airborne | stored band index (channel) | unknown | open | unknown | medium |
+| [infra-art-ftir](../records/infra-art-ftir.md) | INFRA-ART FTIR reference materials | dataset | art-conservation | laboratory | selected FTIR raw reference materials (cm-1) | unknown | open | CC-BY-NC-4.0 (spectra); CC0-1.0 (metadata) | high |
+| [irug](../records/irug.md) | IRUG | collection | art-conservation | laboratory | infrared / Raman (cm-1) | unknown | on-request | unknown | medium |
+| [karly-soil-moisture](../records/karly-soil-moisture.md) | KarLy soil-moisture hyperspectral benchmark | dataset | soil-science | field | visible / near-infrared (nm) | 1 | open | CC-BY-4.0 | medium |
+| [kidney-stone-terahertz](../records/kidney-stone-terahertz.md) | Kidney-stone dataset | dataset | medical-biological | laboratory | terahertz frequency (thz) | 16 | open | Etalab Open Licence 2.0 | medium |
 | [lf-bra](../records/lf-bra.md) | Farm-scale soil spectral library, Brazil (LF_BRA) | dataset | soil-science | laboratory | VNIR (nm) | 102 | open | CC-BY-4.0 | medium |
-| [lithium-hyperspectral-cn](../records/lithium-hyperspectral-cn.md) | Clay-type lithium deposit proximal hyperspectral dataset (China) | dataset | geoscience | laboratory, field | SWIR (nm) | unknown | open | CC-BY-4.0 | low |
-| [lucas](../records/lucas.md) | LUCAS topsoil spectral collection | collection | soil-science | laboratory | MIR (cm-1); VNIR (nm) | unknown | registration | unknown | low |
-| [mtq](../records/mtq.md) | Martinique NIR soil spectral library (MTQ) | dataset | soil-science | laboratory | NIR (nm) | 516 | open | CC-BY-4.0 | medium |
-| [neospectra-nir](../records/neospectra-nir.md) | NeoSpectra handheld NIR soil spectral dataset | dataset | soil-science | handheld | NIR (nm) | 2106 | open | CC-BY-4.0 | medium |
-| [nvcl](../records/nvcl.md) | National Virtual Core Library (NVCL) | portal | geoscience | other | not stated (nm) | unknown | open | unknown | low |
-| [nz-pinus-mir](../records/nz-pinus-mir.md) | New Zealand Pinus radiata forest soil MIR library | dataset | soil-science | laboratory | MIR (cm-1) | unknown | open | unknown | low |
-| [ossl](../records/ossl.md) | Open Soil Spectral Library (OSSL) v1.3 | aggregator | soil-science | laboratory | MIR (cm-1); VNIR (nm); NIR (nm) | 88867 | open | mixed (per source dataset) | medium |
-| [pds-spectra](../records/pds-spectra.md) | NASA PDS Geosciences Node Spectral Library and RELAB | portal | astronomy | laboratory | UV-far-IR (nm) | unknown | open | unknown | low |
-| [pork-nir-tecator](../records/pork-nir-tecator.md) | Minced pork meat NIR dataset (Tecator) | dataset | food-feed-quality | laboratory | NIR (nm) | 215 | open | Public Domain (Tecator terms) | medium |
-| [ws-swind](../records/ws-swind.md) | Southwestern India watershed soil spectral library (WS_SWIND) | dataset | soil-science | laboratory | MIR (cm-1) | 189 | open | CC-BY-4.0 | medium |
+| [lithium-hyperspectral-cn](../records/lithium-hyperspectral-cn.md) | Clay-type lithium deposit proximal hyperspectral dataset (China) | dataset | geoscience | laboratory, field | SWIR; numerical header endpoints uninspected (nm) | unknown | open | unknown | medium |
+| [lucas](../records/lucas.md) | LUCAS topsoil | collection | soil-science | laboratory | selected OSSL visible/near-infrared (nm) | unknown | mixed | unknown | medium |
+| [mango-dry-matter-anderson](../records/mango-dry-matter-anderson.md) | Australian mango dry matter and near-infrared spectra | dataset | food-feed-quality | laboratory | visible / near-infrared; original series coverage (nm) | unknown | open | CC-BY-4.0 | medium |
+| [massbank](../records/massbank.md) | MassBank | portal | molecular-chemistry-metabolomics, food-feed-quality | laboratory | mass-to-charge (mz) | unknown | open | CC-BY-SA for selected AAFC records; database terms vary | medium |
+| [massspecgym](../records/massspecgym.md) | MassSpecGym | dataset | molecular-chemistry-metabolomics | laboratory | tandem mass-spectral peaks (mz) | unknown | open | MIT (dataset card); source-record conditions still apply | medium |
+| [milk-composition-transmittance-nir](../records/milk-composition-transmittance-nir.md) | Milk composition near-infrared transmittance data | dataset | food-feed-quality | laboratory | near-infrared (nm) | 1224 | open | CC-BY-4.0 | medium |
+| [mtq](../records/mtq.md) | Martinique NIR soil spectral library (MTQ) | dataset | soil-science | laboratory | NIR (nm) | 98 | open | CC-BY-NC-4.0 | medium |
+| [neospectra-nir](../records/neospectra-nir.md) | NeoSpectra handheld NIR soil spectral dataset | dataset | soil-science | handheld | provider-documented handheld NIR (nm) | 2106 | open | unknown | medium |
+| [nir-sort](../records/nir-sort.md) | NIR-SORT | dataset | materials-characterisation-recycling | handheld | selected handheld-F stored wavenumber (cm-1) | unknown | open | NIST federal-work notice; foreign and third-party conditions apply | medium |
+| [nist-chemistry-webbook](../records/nist-chemistry-webbook.md) | NIST Chemistry WebBook | portal | molecular-chemistry-metabolomics | laboratory | selected water infrared (cm-1); selected water mass spectrum (mz) | unknown | open | unknown | medium |
+| [nmrshiftdb2](../records/nmrshiftdb2.md) | nmrshiftdb2 | portal | molecular-chemistry-metabolomics | laboratory | assigned NMR chemical shifts (ppm) | unknown | open | unknown | medium |
+| [nvcl](../records/nvcl.md) | National Virtual Core Library (NVCL) | portal | geoscience | laboratory | portal products; instrument-specific axis not selected (unknown) | unknown | open | unknown | medium |
+| [nz-pinus-mir](../records/nz-pinus-mir.md) | New Zealand Pinus radiata forest soil MIR library | dataset | soil-science | laboratory | MIR (cm-1) | unknown | open | CC-BY-4.0 | medium |
+| [opentextile-nir](../records/opentextile-nir.md) | OpenTextile-NIR | dataset | materials-characterisation-recycling | laboratory | short-wave near-infrared (nm) | unknown | open | CC-BY-4.0 | medium |
+| [ossl](../records/ossl.md) | Open Soil Spectral Library (OSSL) | aggregator | soil-science | laboratory | visible/near-infrared (nm); mid-infrared (cm-1) | unknown | open | mixed; source-specific terms | medium |
+| [pavia-university](../records/pavia-university.md) | Pavia University | dataset | remote-sensing | airborne | stored band index (channel) | unknown | open | unknown | medium |
+| [pds-spectra](../records/pds-spectra.md) | NASA PDS Geosciences Node Spectral Library and RELAB | portal | astronomy | laboratory | collection-dependent portal axes; select a product (unknown) | unknown | open | unknown | medium |
+| [pharmaceutical-granules](../records/pharmaceutical-granules.md) | Pharmaceutical granules | dataset | pharma-pat | laboratory | stored near-infrared wavenumber axis (cm-1) | 216 | open | unknown | high |
+| [pork-nir-tecator](../records/pork-nir-tecator.md) | Tecator meat | dataset | food-feed-quality | laboratory | near-infrared (nm) | 215 | open | unknown | high |
+| [portable-nir-forensic-samples](../records/portable-nir-forensic-samples.md) | Portable-NIR forensic samples | dataset | forensics | handheld | device-dependent near-infrared (nm) | unknown | open | CC-BY-4.0 | medium |
+| [radai-gamma-ray](../records/radai-gamma-ray.md) | RADAI gamma-ray dataset | dataset | radiation-nuclear-spectroscopy | other | gamma-ray bin index; physical energy unit unresolved (channel) | unknown | open | CC0-1.0 | medium |
+| [relab](../records/relab.md) | RELAB | collection | geoscience, astronomy | laboratory | selected PDS bidirectional reflectance records (nm) | unknown | open | Brown permission notice; commercial-product incorporation restricted | medium |
+| [rruff](../records/rruff.md) | RRUFF | collection | geoscience | laboratory | Raman / infrared (cm-1) | unknown | open | unknown | low |
+| [salinas](../records/salinas.md) | Salinas | dataset | remote-sensing | airborne | stored band index (channel) | unknown | open | unknown | medium |
+| [sdss-dr20](../records/sdss-dr20.md) | Sloan Digital Sky Survey | portal | astronomy | telescope | selected BOSS optical spectrum (angstrom) | unknown | open | SDSS data-use and citation terms | medium |
+| [slopp-slopp-e](../records/slopp-slopp-e.md) | SLoPP / SLoPP-E | collection | materials-characterisation-recycling | laboratory | Raman shift (cm-1) | unknown | open | unknown | high |
+| [soil-seven-led-moisture](../records/soil-seven-led-moisture.md) | Seven-LED soil-moisture spectra | dataset | soil-science | laboratory | seven discrete near-infrared channels (nm) | unknown | open | CC-BY-4.0 | medium |
+| [sugar-process](../records/sugar-process.md) | Sugar Process | dataset | food-feed-quality | laboratory | fluorescence excitation (nm); fluorescence emission (nm) | 268 | open | unknown | medium |
+| [thailand-homemade-soil-nir](../records/thailand-homemade-soil-nir.md) | Thailand agricultural soil homemade-NIR dataset | dataset | soil-science | laboratory | near-infrared (nm) | 190 | open | CC-BY-4.0 | medium |
+| [tropical-soils-vnir-xrf-libs](../records/tropical-soils-vnir-xrf-libs.md) | Tropical soils: VNIR/XRF/LIBS | dataset | soil-science | laboratory | provider-documented VNIR (nm); provider-documented LIBS (nm); provider-documented XRF (kev) | 102 | open | CC-BY-4.0 (documentation) | medium |
+| [unraveling-molecular-structure](../records/unraveling-molecular-structure.md) | Unraveling Molecular Structure | dataset | molecular-chemistry-metabolomics | other | simulated NMR (ppm); simulated infrared (cm-1); simulated mass peaks (mz) | unknown | open | CDLA-Sharing-1.0 | medium |
+| [usgs-splib-07](../records/usgs-splib-07.md) | USGS Spectral Library | dataset | geoscience | laboratory | UV/visible/infrared; record-dependent (nm) | unknown | open | USGS public-domain notice; contributed-data exceptions | medium |
+| [uwa-wheat-sprouting-ftir](../records/uwa-wheat-sprouting-ftir.md) | UWA germinated-wheat flour FTIR data | dataset | food-feed-quality | laboratory | infrared; stored axis unit and endpoints unverified (unknown) | unknown | open | CC BY-SA (version not established) | medium |
+| [ws-swind](../records/ws-swind.md) | Southwestern India watershed soil spectral library (WS_SWIND) | dataset | soil-science | laboratory | MIR (cm-1) | 189 | open | unknown | medium |

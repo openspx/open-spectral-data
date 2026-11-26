@@ -72,7 +72,7 @@ unavailable; it does not mean the dataset is inaccessible.
 | `band_count` | integer | optional | Number of spectral bands or channels, if fixed. |
 | `sampling_interval` | object | optional | `{value, unit}` spacing between samples; omit or set `null` if irregular. |
 | `spectral_resolution` | object | optional | `{value, unit}` instrumental resolution (FWHM or equivalent). |
-| `spectral_units` | list[enum] | required | Axis units present, one per coverage region: `nm`, `um`, `cm-1`, `angstrom`. Always a list, even for a single unit. |
+| `spectral_units` | list[enum] | required | Axis units present, one per coverage region: `nm`, `um`, `cm-1`, `angstrom`, `mz`, `ppm`, `hz`, `thz`, `kev`, `channel`, `unknown`. Always a list, even for a single unit. |
 | `measurement_mode` | list[enum] | required | What the recorded quantity is. |
 | `intensity_units` | string | optional | Units of the recorded intensity, e.g. `W m-2 sr-1 nm-1`, `DN`, `relative flux`. |
 | `preparation` | string | optional | Sample preparation, if any. |
@@ -221,7 +221,7 @@ flux rather than reflectance or radiance. Use `other` with an explanation in
 
 ### `spectral_units`
 
-`nm` · `um` · `cm-1` · `angstrom`
+`nm` · `um` · `cm-1` · `angstrom` · `mz` · `ppm` · `hz` · `thz` · `kev` · `channel` · `unknown`
 
 `spectral_units` is a list, even when only one unit is present, so a record can hold
 VNIR in `nm` and MIR in `cm-1` at once. Each `spectral_coverage` entry carries its own
@@ -237,6 +237,8 @@ endpoint unknown", not "no coverage"; `spectral_coverage` must still contain at 
 one range.
 
 `um` is ASCII for micrometres. `cm-1` is wavenumber, used mainly for MIR and Raman.
+
+Additional non-optical axes: `mz` means mass-to-charge, `ppm` NMR chemical shift, `hz`/`thz` frequency, and `kev` photon energy. `channel` is an indexed axis and `unknown` explicitly records an unestablished unit; explain either marker in `known_gaps`. Use measurement mode `other` for non-optical signals and describe the stored quantity.
 
 ### `confidence`
 
@@ -356,7 +358,7 @@ definitions:
     properties:
       min: {type: [number, "null"]}
       max: {type: [number, "null"]}
-      unit: {enum: [nm, um, cm-1, angstrom]}
+      unit: {enum: [nm, um, cm-1, angstrom, mz, ppm, hz, thz, kev, channel, unknown]}
       region: {type: string, minLength: 1}
 
   resolution:
@@ -467,7 +469,7 @@ properties:
     minItems: 1
     uniqueItems: true
     items:
-      enum: [nm, um, cm-1, angstrom]
+      enum: [nm, um, cm-1, angstrom, mz, ppm, hz, thz, kev, channel, unknown]
   measurement_mode:
     type: array
     minItems: 1

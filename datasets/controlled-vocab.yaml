@@ -18,8 +18,8 @@
 # lowercase with hyphens, and must not be changed without a migration.
 # ---------------------------------------------------------------------------
 
-version: 1
-updated: "2026-11-16"
+version: 4
+updated: "2026-11-23"
 
 normalisation:
   case: lower
@@ -39,64 +39,109 @@ normalisation:
 # `domain_id` is permanent and is the stable key used by records.
 # `sequence` is display order only; it reproduces the numbering of
 # .documents/domain-reviews.md without encoding it in folder names. Sequence
-# may be changed without touching records; domain_id may not.
+# may be changed without touching records. Existing IDs are never reused;
+# merged records adopt the destination ID, and retired IDs are recorded below.
 # ---------------------------------------------------------------------------
 
 domains_provisional: false
 
 domains:
-  - domain_id: 1
-    sequence: 1
-    slug: soil-science
-    name: Soil science and digital soil mapping
-
-  - domain_id: 2
-    sequence: 2
-    slug: precision-agriculture
-    name: Precision agriculture and crop/plant phenotyping
-
-  - domain_id: 3
-    sequence: 3
-    slug: food-feed-quality
-    name: Food and feed quality, authenticity, and safety
-
-  - domain_id: 4
-    sequence: 4
-    slug: pharma-pat
-    name: Pharmaceuticals and process analytical technology (PAT)
-
-  - domain_id: 5
-    sequence: 5
-    slug: remote-sensing
-    name: Remote sensing and Earth observation
-
-  # Domain 6 corresponds to section 6 of .documents/domain-reviews.md.
-  # It is carried as `geoscience`: mineral species and drill-core concepts
-  # are reference_variables, not a separate domain.
-  - domain_id: 6
-    sequence: 6
-    slug: geoscience
-    name: Geoscience and geological materials
-
-  - domain_id: 7
-    sequence: 7
-    slug: medical-biological
-    name: Medical and biological spectroscopy
-
-  - domain_id: 8
-    sequence: 8
-    slug: forensics
-    name: Forensics
-
-  - domain_id: 9
-    sequence: 9
-    slug: astronomy
-    name: Astronomy
-
-  - domain_id: 10
-    sequence: 10
-    slug: art-conservation
-    name: Art conservation and cultural heritage
+- domain_id: 1
+  sequence: 1
+  slug: soil-science
+  name: Soil science and digital soil mapping
+- domain_id: 2
+  sequence: 2
+  slug: precision-agriculture
+  name: Precision agriculture and crop/plant phenotyping
+- domain_id: 3
+  sequence: 3
+  slug: food-feed-quality
+  name: Food and feed quality, authenticity, and safety
+- domain_id: 4
+  sequence: 4
+  slug: pharma-pat
+  name: Pharmaceuticals and process analytical technology (PAT)
+- domain_id: 5
+  sequence: 5
+  slug: remote-sensing
+  name: Remote sensing and Earth observation
+- domain_id: 6
+  sequence: 6
+  slug: geoscience
+  name: Geoscience and planetary materials
+- domain_id: 7
+  sequence: 7
+  slug: medical-biological
+  name: Medical and biological spectroscopy
+- domain_id: 8
+  sequence: 8
+  slug: forensics
+  name: Forensics
+- domain_id: 9
+  sequence: 9
+  slug: astronomy
+  name: Astronomy
+- domain_id: 10
+  sequence: 10
+  slug: art-conservation
+  name: Art conservation and cultural heritage
+- domain_id: 11
+  sequence: 11
+  slug: aquatic-ecology-water-quality
+  name: Aquatic ecology and water quality
+- domain_id: 12
+  sequence: 12
+  slug: batteries-electrochemical-energy
+  name: Batteries and electrochemical energy storage
+- domain_id: 14
+  sequence: 14
+  slug: materials-characterisation-recycling
+  name: Materials characterisation and recycling
+- domain_id: 16
+  sequence: 16
+  slug: molecular-chemistry-metabolomics
+  name: Molecular chemistry and metabolomics
+- domain_id: 17
+  sequence: 17
+  slug: petroleum-fuel-quality
+  name: Petroleum and fuel quality
+- domain_id: 19
+  sequence: 19
+  slug: plant-functional-ecology-forestry
+  name: Plant functional ecology and forestry
+- domain_id: 21
+  sequence: 21
+  slug: radiation-nuclear-spectroscopy
+  name: Radiation monitoring and nuclear spectroscopy
+domain_aliases:
+  clinical-mineral-deposits: medical-biological
+  microbiology-pathogen-identification: medical-biological
+  materials-elemental-analysis: materials-characterisation-recycling
+  polymers-microplastics: materials-characterisation-recycling
+  textile-identification-recycling: materials-characterisation-recycling
+  planetary-science: geoscience
+retired_domains:
+- domain_id: 13
+  slug: clinical-mineral-deposits
+  merged_into: medical-biological
+  merged_into_domain_id: 7
+- domain_id: 15
+  slug: microbiology-pathogen-identification
+  merged_into: medical-biological
+  merged_into_domain_id: 7
+- domain_id: 18
+  slug: planetary-science
+  merged_into: geoscience
+  merged_into_domain_id: 6
+- domain_id: 20
+  slug: polymers-microplastics
+  merged_into: materials-characterisation-recycling
+  merged_into_domain_id: 14
+- domain_id: 22
+  slug: textile-identification-recycling
+  merged_into: materials-characterisation-recycling
+  merged_into_domain_id: 14
 
 # ---------------------------------------------------------------------------
 # Enumerations
@@ -116,6 +161,11 @@ enums:
 
   confidence:
     provisional: false
+    note: >
+      Evidence support for the catalogue description at its stated release/scope,
+      independent of status and dates; not scientific accuracy or reuse permission.
+      Historical primary evidence may support confidence. A subset does not validate
+      an entire library; retain unknowns and restrictions at every confidence level.
     canonical: [high, medium, low]
     aliases: {}
 
@@ -294,12 +344,23 @@ enums:
       even when only one unit is present; each spectral_coverage range carries
       its own unit. Intensity units (W m-2 sr-1 nm-1, DN, relative flux, etc.)
       are free text in the record's intensity_units field and are not
-      constrained here.
+      constrained here. mz is mass-to-charge (m/z); ppm is NMR chemical shift;
+      hz, thz and kev are canonical spellings of Hz, THz and keV. channel is an index,
+      not a physical unit. unknown is an explicit missing-unit marker, never
+      an inferred wavelength or energy unit. These last two require a
+      known_gaps explanation in the record.
     canonical:
       - nm
       - um
       - cm-1
       - angstrom
+      - mz
+      - ppm
+      - hz
+      - thz
+      - kev
+      - channel
+      - unknown
     aliases:
       nanometre: nm
       nanometer: nm
@@ -318,6 +379,15 @@ enums:
       "Å": angstrom
       Angstrom: angstrom
       angstroms: angstrom
+      "m/z": mz
+      mass-to-charge: mz
+      parts-per-million: ppm
+      hertz: hz
+      terahertz: thz
+      kiloelectronvolt: kev
+      band-index: channel
+      bin-index: channel
+      unspecified-axis-unit: unknown
 
 # ---------------------------------------------------------------------------
 # Provisional sets, summarised for tooling:

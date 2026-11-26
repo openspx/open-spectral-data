@@ -8,19 +8,18 @@ status: active
 host: University of Zurich
 landing_page: https://zenodo.org/records/10609291
 doi: 10.5281/zenodo.10609291
-citation: Schiedung, M., et al. Soil spectral library from high-latitude forests of
-  northern Canada. Zenodo.
+citation: Schiedung, M., et al. Soil spectral library from high-latitude forests of northern Canada. Zenodo.
 platform:
 - laboratory
 spectral_coverage:
-- min:
-  max:
+- min: null
+  max: null
   unit: cm-1
   region: MIR
 spectral_units:
 - cm-1
 measurement_mode:
-- reflectance
+- absorbance
 count: 289
 count_qualifier: exact
 reference_variables:
@@ -52,17 +51,32 @@ reference_variables:
   kind: continuous
   measured: unknown
 access_class: open
-licence: CC-BY-4.0
+licence: unknown
 download_url: https://zenodo.org/records/10609291
 known_gaps:
-- MIR acquisition mode is not stated in the OSSL catalogue.
 - Property methods and measured-versus-derived status are not stated.
+- The maintainer attribution label is documented, but the original-deposit licence was not independently
+  established in the accessible provider metadata; check original terms before reuse.
+- Original v2 corrects coordinates from the earlier deposit; numerical coordinate values were not inspected
+  in this review.
 confidence: medium
-last_verified:
-verification_notes: OSSL catalogue checked; Zenodo record not reopened.
+last_verified: '2026-11-23'
+verification_notes: 'current original-deposit and maintainer-card documentation; date 2026-11-23. The
+  original corrected-v2 deposit identifies DRIFT and variable-dictionary files and a coordinate correction;
+  the OSSL card reports 289 rows and method-coded properties. No numerical file set was inspected. The
+  card does not establish an independently verified original-deposit licence or the provenance of every
+  standardized property. The current maintainer card identifies the standardized stored signal as absorbance,
+  not untransformed reflectance; original source files remain uninspected. Sources: https://zenodo.org/records/10609291;
+  https://docs.soilspectroscopy.org/datasets/HLF_CAN.html.'
 part_of: ossl
 children: []
 related: []
+version: Original corrected-v2 deposit; OSSL view separately documented
+intensity_units: OSSL MIR absorbance from DRIFT; original raw and background-corrected products remain
+  distinct
+harmonisation_issues:
+- The current maintainer card identifies the standardized stored signal as absorbance, not untransformed
+  reflectance; original source files remain uninspected.
 ---
 
 # High-latitude forest soil spectral library, northern Canada (HLF_CAN)
@@ -73,4 +87,12 @@ The OSSL v1.3 release standardizes bulk density (ISO 11272), total nitrogen (ISO
 
 Original source: [Zenodo record 10609291](https://zenodo.org/records/10609291). Contact: Marcus Schiedung (University of Zurich).
 
-This record was assembled from the OSSL v1.3 catalogue; the Zenodo deposit was not reopened during the pass.
+The earlier catalogue used the OSSL v1.3 representation. The current source checks and remaining limits are stated in verification_notes.
+
+
+## Quality and caveats
+
+**Record confidence: medium.** The original corrected-v2 deposit identifies DRIFT and variable-dictionary files and a coordinate correction; the OSSL card reports 289 rows and method-coded properties. No numerical file set was inspected. The card does not establish an independently verified original-deposit licence or the provenance of every standardized property. The current maintainer card identifies the standardized stored signal as absorbance, not untransformed reflectance; original source files remain uninspected. The verification date is 2026-11-23 and covers current original-deposit and maintainer-card documentation, not scientific accuracy or every resource component.
+
+
+Review sources: [primary source 1](https://zenodo.org/records/10609291), [primary source 2](https://docs.soilspectroscopy.org/datasets/HLF_CAN.html).
